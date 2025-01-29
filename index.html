@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camila & Jaidden - Nuestra Boda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+    <style>
+       body {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            background-color: #F5F5DC; /* Beige claro */
+            color: #4C5F56; /* Verde oscuro */
+        }
+
+        header {
+            position: relative;
+            height: 100vh;
+            background: url('static/images/portadaa.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        header .contenido-portada {
+            text-align: center;
+            background-color: rgba(195, 228, 221, 0.7); /* Verde menta claro semitransparente */
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        /* Aplicación de la fuente Zeyada al título */
+        header h1 {
+            font-family: 'Zeyada', cursive; /* Fuente Zeyada */
+            font-size: 4rem;
+            font-weight: normal;
+            margin: 0;
+            color: #FFFFFF; /* Blanco */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        header p {
+            font-size: 1.4rem;
+            font-style: italic;
+            margin: 10px 0 20px;
+            color: #FFFFFF; /* Blanco */
+        }
+
+        header .boton-principal {
+            margin-top: 20px;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            background-color: #C3E4DD; /* Verde menta */
+            color: #4C5F56; /* Verde oscuro */
+            border: 2px solid #FFFFFF; /* Blanco */
+            border-radius: 25px;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        header .boton-principal:hover {
+            background-color: #A8D8CC; /* Verde menta más oscuro */
+        }
+
+        .contenido-principal {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .contenido-principal img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .contador {
+            text-align: center;
+            padding: 40px;
+            background-color: #F5F5DC; /* Beige claro */
+        }
+
+        .contador h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #4C5F56; /* Verde oscuro */
+        }
+
+        .contador .tiempo {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .contador .tiempo div span {
+            font-size: 2.5rem;
+            display: block;
+            color: #4C5F56; /* Verde oscuro */
+        }
+
+        .contador .tiempo div p {
+            font-size: 1rem;
+            margin: 0;
+            color: #4C5F56; /* Verde oscuro */
+        }
+
+        /* Diseño del botón de música */
+        .boton-musica-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px auto;
+        }
+
+        .boton-musica {
+            background-color: #C3E4DD; /* Verde menta */
+            color: #4C5F56; /* Verde oscuro */
+            border: 2px solid #FFFFFF; /* Blanco */
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .boton-musica:hover {
+            background-color: #A8D8CC; /* Verde menta más oscuro */
+            transform: scale(1.1);
+        }
+
+        .boton-musica i {
+            font-size: 1.8rem;
+            color: #4C5F56; /* Verde oscuro */
+        }
+
+        .detalles-boda {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .vestimenta-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .vestimenta-item {
+            background-color: #FFFFFF; /* Blanco */
+            border: 2px solid #C3E4DD; /* Verde menta */
+            border-radius: 10px;
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .vestimenta-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .vestimenta-item h3 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #4C5F56; /* Verde oscuro */
+        }
+
+        .itinerario {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            padding: 40px 20px;
+            background-color: #EEF0EC; /* Verde claro */
+        }
+
+        .itinerario .item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 600px;
+            background-color: #FFFFFF; /* Blanco */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .itinerario .item .icono {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #4C5F56; /* Verde oscuro */
+            color: #FFFFFF; /* Blanco */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+
+        .itinerario .item .contenido h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4C5F56; /* Verde oscuro */
+        }
+
+        footer {
+            background-color: #4C5F56; /* Verde oscuro */
+            color: #FFFFFF; /* Blanco */
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header id="inicio">
+        <div class="contenido-portada">
+            <h1>Nuestra historia</h1>
+            <p>J&C</p>
+            <a href="#detalles" class="boton-principal">¡Nuestra Boda!</a>
+            <p>Octubre 2025</p>
+        </div>
+    </header>
+
+    <section id="detalles" class="contenido-principal">
+        <img src="static/images/boda.jpg" alt="Imagen de boda">
+        <h2>Jaidden & Camila</h2>
+        <div class="boton-musica-container">
+            <button class="boton-musica" onclick="toggleMusic()">
+                <i class="fas fa-play"></i>
+            </button>
+            <p style="font-size: 1rem; color: #4C5F56;">Reproduce nuestra canción</p>
+        </div>
+        <p>Dios nos unió con un propósito y nos mantendrá unidos por la misma razón.</p>
+    </section>
+
+    <section class="contador">
+        <h2>Cuenta regresiva para nuestro día especial</h2>
+        <div class="tiempo">
+            <div>
+                <span id="dias">0</span>
+                <p>Días</p>
+            </div>
+            <div>
+                <span id="horas">0</span>
+                <p>Horas</p>
+            </div>
+            <div>
+                <span id="minutos">0</span>
+                <p>Minutos</p>
+            </div>
+            <div>
+                <span id="segundos">0</span>
+                <p>Segundos</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="detalles-boda">
+        <h2>Código de Vestimenta</h2>
+        <div class="vestimenta-container">
+            <div class="vestimenta-item">
+                <a href="https://www.pinterest.com/search/pins/?q=smoking" target="_blank">
+                    <img src="static/images/smoking-dibujo.jpg" alt="Smoking">
+                </a>
+                <h3>Smoking</h3>
+            </div>
+            <div class="vestimenta-item">
+                <a href="https://www.pinterest.com/search/pins/?q=vestido+largo" target="_blank">
+                    <img src="static/images/vestido-largo-dibujo.jpg" alt="Vestido Largo">
+                </a>
+                <h3>Vestido Largo</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="itinerario">
+        <h2>Itinerario</h2>
+        <div class="item">
+            <div class="icono">
+                <i class="fas fa-church"></i>
+            </div>
+            <div class="contenido">
+                <h3>Ceremonia</h3>
+                <p>3:00 PM - Capilla La China</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icono">
+                <i class="fas fa-glass-cheers"></i>
+            </div>
+            <div class="contenido">
+                <h3>Recepción</h3>
+                <p>4:00 PM - Fantasía Campestre</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icono">
+                <i class="fas fa-utensils"></i>
+            </div>
+            <div class="contenido">
+                <h3>Cena</h3>
+                <p>8:00 PM - Salón Principal</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icono">
+                <i class="fas fa-moon"></i>
+            </div>
+            <div class="contenido">
+                <h3>Trasnochado</h3>
+                <p>11:00 PM - Área Lounge</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Con mucho amor, Camila & Jaidden</p>
+    </footer>
+
+    <audio id="musica" src="static/music/musica.mp3" loop></audio>
+    <script>
+        const musica = document.getElementById('musica');
+        let musicaReproduciendo = false;
+
+        function toggleMusic() {
+            if (musicaReproduciendo) {
+                musica.pause();
+                document.querySelector('.boton-musica i').classList.replace('fa-pause', 'fa-play');
+            } else {
+                musica.play();
+                document.querySelector('.boton-musica i').classList.replace('fa-play', 'fa-pause');
+            }
+            musicaReproduciendo = !musicaReproduciendo;
+        }
+
+        const eventoFecha = new Date("2025-10-25T15:00:00").getTime();
+        function actualizarTiempo() {
+            const ahora = new Date().getTime();
+            const diferencia = eventoFecha - ahora;
+
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            document.getElementById('dias').textContent = dias;
+            document.getElementById('horas').textContent = horas;
+            document.getElementById('minutos').textContent = minutos;
+            document.getElementById('segundos').textContent = segundos;
+        }
+
+        setInterval(actualizarTiempo, 1000);
+    </script>
+</body>
+</html>

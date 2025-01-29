@@ -1,0 +1,56 @@
+body {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    color: #444;
+    background-color: #f8f8f8;
+}
+
+header.portada {
+    height: 100vh;
+    background: url('static/images/portada.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.contenido-portada {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.titulo-portada {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.subtitulo-portada {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.btn-entrar {
+    padding: 10px 20px;
+    border: none;
+    background-color: #d4af37;
+    color: white;
+    font-size: 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-entrar:hover {
+    background-color: #b18c2e;
+}
+
+/* Otras secciones */
+.titulo-seccion {
+    font-size: 2.5rem;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* Personaliza más según los colores y detalles */

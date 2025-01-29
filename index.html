@@ -179,18 +179,18 @@
             font-size: 1.5rem;
             color: #4C5F56; /* Verde oscuro */
         }
-    
+
         @media (max-width: 768px) {
             .vestimenta-container {
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-                padding: 10px;
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
+                flex-wrap: wrap;
             }
             .vestimenta-item {
-                width: 90%;
-                padding: 15px;
+                width: 45%;
+                padding: 10px;
             }
             .vestimenta-item img {
                 width: 100%;
@@ -198,6 +198,11 @@
             }
             .vestimenta-item h3 {
                 font-size: 1.2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .vestimenta-item {
+                width: 100%; /* Para pantallas muy pequeñas, uno debajo del otro */
             }
         }
         .itinerario {

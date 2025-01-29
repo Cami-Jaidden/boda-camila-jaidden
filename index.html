@@ -153,15 +153,16 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
             margin-top: 20px;
+            align-items: center;
         }
 
         .vestimenta-item {
             background-color: #FFFFFF; /* Blanco */
             border: 2px solid #C3E4DD; /* Verde menta */
             border-radius: 10px;
-            width: 300px;
+            width: 250px;
             padding: 20px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -178,7 +179,27 @@
             font-size: 1.5rem;
             color: #4C5F56; /* Verde oscuro */
         }
-
+    
+        @media (max-width: 768px) {
+            .vestimenta-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 10px;
+            }
+            .vestimenta-item {
+                width: 90%;
+                padding: 15px;
+            }
+            .vestimenta-item img {
+                width: 100%;
+                height: auto;
+            }
+            .vestimenta-item h3 {
+                font-size: 1.2rem;
+            }
+        }
         .itinerario {
             display: flex;
             flex-direction: column;

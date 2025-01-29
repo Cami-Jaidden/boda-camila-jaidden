@@ -183,13 +183,13 @@
         @media (max-width: 768px) {
             .vestimenta-container {
                 display: flex;
-                flex-direction: row;
+                flex-wrap: wrap;
                 justify-content: center;
                 gap: 10px;
-                flex-wrap: wrap;
+                flex-direction: row;
             }
             .vestimenta-item {
-                width: 45%;
+                width: 45%; /* Se asegura de que estén en fila en móviles */
                 padding: 10px;
             }
             .vestimenta-item img {
@@ -200,9 +200,13 @@
                 font-size: 1.2rem;
             }
         }
+
         @media (max-width: 480px) {
+            .vestimenta-container {
+                flex-direction: row;
+            }
             .vestimenta-item {
-                width: 100%; /* Para pantallas muy pequeñas, uno debajo del otro */
+                width: 45%; /* Mantiene las imágenes en fila en móviles pequeños */
             }
         }
         .itinerario {

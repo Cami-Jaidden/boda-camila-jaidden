@@ -93,6 +93,106 @@
     margin-top: 40px; /* Baja todo el grupo de letras */
 }
 
+.nombre-boda-container {
+    background-color: #EEF0EC; /* Fondo del itinerario */
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.nombre-boda {
+    font-family: 'Great Vibes', cursive;
+    font-size: 9rem;
+    font-weight: 400;
+    color: #4C5F56; /* Verde oscuro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+    position: relative;
+    width: 100%;
+    margin-top: 40px;
+}
+
+/* Ajuste de "Jaidden" */
+.nombre-jaidden {
+    text-align: left;
+    font-size: 7rem;
+    position: absolute;
+    left: 28%; /* Acerca más a la & */
+    top: -50px;
+}
+
+/* Ajuste del "&" */
+.ampersand {
+    text-align: center;
+    font-size: 8rem;
+    position: relative;
+    top: 10px;
+}
+
+/* Ajuste de "Camila" */
+.nombre-camila {
+    text-align: right;
+    font-size: 7rem;
+    position: absolute;
+    right: 30%; /* Acerca más a la & */
+    top: 45px;
+}
+
+/* 📱 Ajustes Responsivos */
+@media (max-width: 768px) {
+    .nombre-boda {
+        font-size: 6rem;
+        margin-top: 20px;
+    }
+
+    .nombre-jaidden {
+        font-size: 5rem;
+        left: 23%; /* Más cerca de la & */
+        top: -20px;
+    }
+
+    .ampersand {
+        font-size: 6rem;
+        top: 5px;
+    }
+
+    .nombre-camila {
+        font-size: 5rem;
+        right: 25%; /* Más cerca de la & */
+        top: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nombre-boda {
+        font-size: 5rem;
+        margin-top: 15px;
+    }
+
+    .nombre-jaidden {
+        font-size: 4rem;
+        left: 20%; /* Más cerca aún */
+        top: -15px;
+    }
+
+    .ampersand {
+        font-size: 5rem;
+        top: 0px;
+    }
+
+    .nombre-camila {
+        font-size: 4rem;
+        right: 20%; /* Más cerca aún */
+        top: 15px;
+    }
+}
+
+
 .letra {
     display: block;
     position: relative;
@@ -765,7 +865,12 @@
 
     <section id="detalles" class="contenido-principal">
         <img src="static/images/boda.jpg" alt="Imagen de boda">
-        <p class="verde-destacado">Jaidden & Camila</p>
+        <h2 class="nombre-boda">
+            <span class="nombre-jaidden">Jaidden</span>
+            <span class="ampersand">&</span>
+            <span class="nombre-camila">Camila</span>
+        </h2>
+        
         <div class="boton-musica-container">
             <button class="boton-musica" onclick="toggleMusic()">
                 <i class="fas fa-play"></i>

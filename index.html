@@ -265,33 +265,39 @@
         }
 
         @media (max-width: 768px) {
-            .vestimenta-container {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 20px;
-                flex-direction: row;
-            }
-            .vestimenta-item {
-                width: 45%; /* Se asegura de que estén en fila en móviles */
-                padding: 10px;
-            }
-            .vestimenta-item img {
-                width: 100%;
-                height: auto;
-            }
-            .vestimenta-item h3 {
-                font-size: 1.2rem;
-            }
-        }
+    .vestimenta-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly; /* Distribuye uniformemente */
+        flex-direction: row; /* Asegura disposición en fila */
+    }
+    
+    .vestimenta-item {
+        width: 48%; /* Hace que ocupen casi la mitad del ancho */
+        padding: 10px;
+        box-sizing: border-box; /* Evita que los bordes afecten el ancho */
+    }
+    
+    .vestimenta-item img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .vestimenta-item h3 {
+        font-size: 1.2rem;
+    }
+}
 
-        @media (max-width: 480px) {
-            .vestimenta-container {
-                flex-direction: row;
-            }
-            .vestimenta-item {
-                width: 45%; /* Mantiene las imágenes en fila en móviles pequeños */
-            }
+@media (max-width: 480px) {
+    .vestimenta-container {
+        justify-content: space-around; /* Más compacto en móviles pequeños */
+    }
+    
+    .vestimenta-item {
+        width: 47%;
+    }
+
+
         }
         .itinerario {
             display: flex;

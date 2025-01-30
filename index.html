@@ -580,6 +580,91 @@
 
         .boton-calendario {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F8F9F6; /* Color suave */
+    color: #4C5F56; /* Verde oscuro */
+    border-radius: 25px;
+    padding: 15px 20px; /* Reduce el padding */
+    font-size: 1.4rem; /* Reduce tamaño */
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    max-width: 90%; /* Reduce el ancho máximo */
+    width: auto;
+    text-align: center; /* Asegura que el texto esté centrado */
+    cursor: pointer;
+    border: none;
+    position: relative;
+    margin: 15px auto; /* Centrar en móviles */
+    flex-wrap: wrap; /* Permite que el contenido se acomode mejor */
+}
+
+.boton-calendario img {
+    width: 60px; /* Reduce el tamaño del icono */
+    height: auto;
+    margin-right: 10px; /* Reduce el espacio */
+}
+
+/* Ajustar el tamaño del texto y la fecha */
+.texto-calendario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fecha-boda {
+    font-size: 2rem; /* Reduce el tamaño de la fecha */
+    font-family: 'Great Vibes', cursive;
+    font-weight: bold;
+    color: #4C5F56; /* Verde oscuro */
+    margin-top: 5px;
+}
+
+/* 🔹 Estilos para pantallas menores a 768px */
+@media (max-width: 768px) {
+    .boton-calendario {
+        flex-direction: column; /* Apila los elementos */
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .boton-calendario img {
+        width: 50px; /* Reduce aún más el tamaño */
+        margin-bottom: 5px;
+    }
+
+    .fecha-boda {
+        font-size: 1.8rem; /* Ajuste para móviles */
+    }
+}
+
+/* 🔹 Ajustes específicos para pantallas menores a 480px */
+@media (max-width: 480px) {
+    .boton-calendario {
+        padding: 8px 15px; /* Reduce aún más el padding */
+        flex-direction: column; /* Apila en móviles pequeños */
+        text-align: center;
+    }
+
+    .boton-calendario img {
+        width: 45px; /* Reduce más el tamaño del icono */
+        margin-bottom: 5px;
+    }
+
+    .fecha-boda {
+        font-size: 1.6rem; /* Aún más pequeño para pantallas pequeñas */
+    }
+
+    .texto-calendario span {
+        font-size: 1.2rem; /* Reduce el tamaño del texto */
+    }
+}
+
+        .boton-calendario {
+    display: flex;
     align-items: center; /* Alineación vertical */
     justify-content: center;
     background-color: #F8F9F6; /* Color suave */

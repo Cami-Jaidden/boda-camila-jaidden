@@ -253,10 +253,12 @@
         }
 
         .vestimenta-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
+    width: 100%; /* Asegura que todas las imágenes ocupen el ancho disponible */
+    height: 300px; /* Establece una altura fija para que todas tengan el mismo tamaño */
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    border-radius: 10px;
+}
+
 
         .vestimenta-item h3 {
             margin: 10px 0;
@@ -292,9 +294,12 @@
     }
     
     .vestimenta-item img {
-        width: 100%;
-        height: auto;
-    }
+    width: 100%; /* Asegura que todas las imágenes ocupen el ancho disponible */
+    height: 300px; /* Establece una altura fija para que todas tengan el mismo tamaño */
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    border-radius: 10px;
+}
+
 }
 
 @media (max-width: 480px) {

@@ -532,18 +532,25 @@
 
 .swiper-container {
     width: 100%;
-    height: 250px;
+    max-width: 1200px;
+    height: auto;
     overflow: hidden;
 }
 
 .swiper-slide img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
-    cursor: pointer;
     border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
 }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .swiper-slide img {
+        height: 200px; /* Reduce el tamaño de las imágenes en móviles */
+    }
+}
+
 
 .swiper-slide img:hover {
     transform: scale(1.05);
@@ -818,22 +825,37 @@
     </script>
     <script>
         var swiper = new Swiper(".swiper-container", {
-            slidesPerView: 3,  /* Cantidad de imágenes visibles */
-            spaceBetween: 20,  /* Espacio entre imágenes */
-            loop: true,  /* Hace que el carrusel sea infinito */
-            autoplay: {
-                delay: 2500,  /* Tiempo entre cada cambio de imagen (2.5s) */
-                disableOnInteraction: false, /* Que siga automático después de hacer clic */
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
+    slidesPerView: 3,  /* En PC se ven 3 imágenes */
+    spaceBetween: 20,  /* Espacio entre imágenes */
+    loop: true,  
+    autoplay: {
+        delay: 2500, 
+        disableOnInteraction: false, 
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+        1024: { /* Pantallas grandes (PC) */
+            slidesPerView: 3,
+            spaceBetween: 20
+        },
+        768: { /* Tablets */
+            slidesPerView: 2,
+            spaceBetween: 15
+        },
+        480: { /* Celulares */
+            slidesPerView: 2,  /* Ahora en móviles se ven 2 imágenes */
+            spaceBetween: 10
+        }
+    }
+});
+
     
         // Ampliar imagen al hacer clic
         document.querySelectorAll('.swiper-slide img').forEach(img => {

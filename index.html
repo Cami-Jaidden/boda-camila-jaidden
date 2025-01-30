@@ -15,6 +15,15 @@
             color: #4C5F56; /* Verde oscuro */
             text-align: center;
         }
+                .titulo-principal {
+            font-family: 'Cormorant', serif;
+            font-size: 1.8rem; /* Un poco más grande */
+            color: #4C5F56;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px; /* Más separación debajo */
+        }
 
                 h2.titulo-principal {
             font-family: 'Cormorant', serif; /* Misma fuente del botón */
@@ -59,60 +68,29 @@
         h5 {
             font-family: 'Great Vibes', cursive;
             font-size: 3rem; /* Más grande como título */
-            font-weight: bold;
+            
             color: #4C5F56; /* Verde oscuro */
         }
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 50px auto;
+
+                .letra-grande {
+            font-size: 8rem; /* Más grande que el resto */
+            font-family: 'Great Vibes', cursive;
+            font-weight: bold;
+            margin: 30px 0; /* Más espacio arriba y abajo */
+            display: block;
+            line-height: 1.2; /* Ajuste para que no se vea muy apretado */
         }
 
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: #4C5F56;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-        }
 
-        .timeline-item {
-            position: relative;
-            width: 50%;
-            padding: 20px;
-            text-align: right;
-        }
 
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            text-align: left;
-        }
 
-        .timeline-icon {
-            position: absolute;
-            top: 15px;
-            left: 50%;
-            width: 60px;
-            height: 60px;
-            background-color: #4C5F56;
-            border: 3px solid #FFFFFF;
-            border-radius: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            color: #FFFFFF;
-        }
-
+      
         @media (max-width: 768px) {
             h4, h5 {
                 font-size: 2rem; /* Reduce el tamaño en pantallas pequeñas */
             }
         }
+
         header {
             position: relative;
             height: 100vh;
@@ -123,12 +101,21 @@
             text-align: center;
         }
 
-        header .contenido-portada {
+                header .contenido-portada {
             text-align: center;
-            background-color: rgba(195, 228, 221, 0.7); /* Verde menta claro semitransparente */
-            padding: 20px;
-            border-radius: 15px;
+            background-color: rgba(195, 228, 221, 0.85); /* Fondo semitransparente */
+            padding: 40px 35px; /* Reduce un poco el padding */
+            border-radius: 20px; /* Bordes suaves */
+            width: 50%; /* Ajuste de ancho */
+            max-width: 300px; /* No más grande que esto */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8px; /* Espaciado menor entre elementos */
         }
+
+
+
 
         /* Aplicación de la fuente Zeyada al título */
         header h1 {
@@ -386,7 +373,7 @@
         <div class="contenido-portada">
             <h2 class="titulo-principal">Nuestra Historia</h2>
 
-            <p>J & C</p>
+            <p class="letra-grande">J & C</p>
             <p></p>
             <p></p>
             <a href="#detalles" class="boton-principal">¡Nuestra Boda!</a>

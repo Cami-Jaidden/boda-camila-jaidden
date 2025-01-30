@@ -16,6 +16,18 @@
             text-align: center;
         }
 
+                h2.titulo-principal {
+            font-family: 'Cormorant', serif; /* Misma fuente del botón */
+            font-size: 1.5rem; /* Mismo tamaño */
+            color: #4C5F56; /* Mismo color */
+            text-transform: uppercase; /* Mayúsculas */
+            font-weight: 400; /* Mismo grosor del texto del botón */
+            letter-spacing: 1px; /* Espaciado similar */
+            margin: 10px 0;
+        }
+
+
+
         .contenido-portada h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 3rem;
@@ -31,7 +43,9 @@
             font-size: 1.5rem;
         }
 
-    
+        h6 {
+            font-family: 'Playfair Display', serif;
+        }
         h2, h3 {
             font-family: 'Playfair Display', serif;
         }
@@ -44,7 +58,7 @@
         }
         h5 {
             font-family: 'Great Vibes', cursive;
-            font-size: 4rem; /* Más grande como título */
+            font-size: 3rem; /* Más grande como título */
             font-weight: bold;
             color: #4C5F56; /* Verde oscuro */
         }
@@ -252,32 +266,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .vestimenta-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 250px; /* Mantiene un ancho uniforme */
-    height: 400px; /* Fija la altura para todas las tarjetas */
-    padding: 20px;
-    background-color: #FFFFFF;
-    border: 2px solid #C3E4DD;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.vestimenta-item img {
-    width: 100%;
-    height: 250px; /* Fija la altura de la imagen */
-    object-fit: contain; /* Asegura que la imagen se ajuste sin cortarse */
-}
-
-.vestimenta-item h3 {
-    font-size: 1.5rem;
-    margin-top: 10px;
-    text-align: center;
-}
-
+        
         .vestimenta-item img {
     width: 100%; /* Asegura que todas las imágenes ocupen el ancho disponible */
     height: 300px; /* Establece una altura fija para que todas tengan el mismo tamaño */
@@ -395,7 +384,8 @@
 <body>
     <header id="inicio">
         <div class="contenido-portada">
-            <h1>Nuestra historia</h1>
+            <h2 class="titulo-principal">Nuestra Historia</h2>
+
             <p>J & C</p>
             <p></p>
             <p></p>

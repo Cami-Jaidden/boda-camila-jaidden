@@ -337,21 +337,33 @@
             align-items: center;
         }
 
-        .vestimenta-item {
-            background-color: #FFFFFF; /* Blanco */
-            border: 2px solid #C3E4DD; /* Verde menta */
-            border-radius: 10px;
-            width: 250px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+        .vestimenta-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: stretch; /* Asegura que los elementos tengan la misma altura */
+}
 
-        
-        .vestimenta-item img {
-    width: 100%; /* Asegura que todas las imágenes ocupen el ancho disponible */
-    height: 300px; /* Establece una altura fija para que todas tengan el mismo tamaño */
-    object-fit: cover; /* Ajusta la imagen sin deformarla */
+.vestimenta-item {
+    background-color: #FFFFFF; /* Blanco */
+    border: 2px solid #C3E4DD; /* Verde menta */
+    border-radius: 10px;
+    width: 250px; /* Mantiene un tamaño uniforme */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Asegurar que las imágenes tengan el mismo tamaño */
+.vestimenta-item img {
+    width: 100%; /* Mantiene la imagen dentro del contenedor */
+    height: 300px; /* Fija la altura */
+    object-fit: contain; /* Evita deformaciones */
     border-radius: 10px;
 }
 
@@ -363,7 +375,7 @@
     margin-top: 10px;
 }
 
-/* Cada círculo de color (clickeable) */
+/* Círculos de colores */
 .color-circle {
     width: 25px;
     height: 25px;
@@ -380,27 +392,36 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-
-
-
-        .vestimenta-item h3 {
-            margin: 10px 0;
-            font-size: 1.5rem;
-            color: #4C5F56; /* Verde oscuro */
-        }
-
-        @media (max-width: 1024px) {
+/* Ajustar para móviles */
+@media (max-width: 768px) {
     .vestimenta-container {
-        display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
     }
-    
+
     .vestimenta-item {
-        width: 40%; /* Se asegura que en pantallas más grandes sigan en fila */
+        width: 45%; /* Mantiene proporciones en móviles */
+        padding: 15px;
+    }
+
+    .vestimenta-item img {
+        height: 250px; /* Reduce tamaño en pantallas pequeñas */
     }
 }
+
+/* Ajuste adicional para pantallas más pequeñas */
+@media (max-width: 480px) {
+    .vestimenta-item {
+        width: 90%; /* Ocupa más espacio en móviles */
+        padding: 10px;
+    }
+
+    .vestimenta-item img {
+        height: 220px; /* Ajuste para móviles pequeños */
+    }
+}
+
 
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
@@ -578,100 +599,17 @@
             padding: 20px;
         }
 
-        .boton-calendario {
+      
+/* Contenedor principal del botón */
+.boton-calendario {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #F8F9F6; /* Color suave */
     color: #4C5F56; /* Verde oscuro */
     border-radius: 25px;
-    padding: 15px 20px; /* Reduce el padding */
-    font-size: 1.4rem; /* Reduce tamaño */
-    font-family: 'Playfair Display', serif;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-    max-width: 90%; /* Reduce el ancho máximo */
-    width: auto;
-    text-align: center; /* Asegura que el texto esté centrado */
-    cursor: pointer;
-    border: none;
-    position: relative;
-    margin: 15px auto; /* Centrar en móviles */
-    flex-wrap: wrap; /* Permite que el contenido se acomode mejor */
-}
-
-.boton-calendario img {
-    width: 60px; /* Reduce el tamaño del icono */
-    height: auto;
-    margin-right: 10px; /* Reduce el espacio */
-}
-
-/* Ajustar el tamaño del texto y la fecha */
-.texto-calendario {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.fecha-boda {
-    font-size: 2rem; /* Reduce el tamaño de la fecha */
-    font-family: 'Great Vibes', cursive;
-    font-weight: bold;
-    color: #4C5F56; /* Verde oscuro */
-    margin-top: 5px;
-}
-
-/* 🔹 Estilos para pantallas menores a 768px */
-@media (max-width: 768px) {
-    .boton-calendario {
-        flex-direction: column; /* Apila los elementos */
-        padding: 10px;
-        max-width: 100%;
-    }
-
-    .boton-calendario img {
-        width: 50px; /* Reduce aún más el tamaño */
-        margin-bottom: 5px;
-    }
-
-    .fecha-boda {
-        font-size: 1.8rem; /* Ajuste para móviles */
-    }
-}
-
-/* 🔹 Ajustes específicos para pantallas menores a 480px */
-@media (max-width: 480px) {
-    .boton-calendario {
-        padding: 8px 15px; /* Reduce aún más el padding */
-        flex-direction: column; /* Apila en móviles pequeños */
-        text-align: center;
-    }
-
-    .boton-calendario img {
-        width: 45px; /* Reduce más el tamaño del icono */
-        margin-bottom: 5px;
-    }
-
-    .fecha-boda {
-        font-size: 1.6rem; /* Aún más pequeño para pantallas pequeñas */
-    }
-
-    .texto-calendario span {
-        font-size: 1.2rem; /* Reduce el tamaño del texto */
-    }
-}
-
-        .boton-calendario {
-    display: flex;
-    align-items: center; /* Alineación vertical */
-    justify-content: center;
-    background-color: #F8F9F6; /* Color suave */
-    color: #4C5F56; /* Verde oscuro */
-    border-radius: 25px;
-    padding: 20px 40px; /* Espaciado */
-    font-size: 1.6rem;
+    padding: 15px 30px; /* Espaciado ajustado */
+    font-size: 1.4rem;
     font-family: 'Playfair Display', serif;
     font-weight: bold;
     text-decoration: none;
@@ -679,47 +617,81 @@
     transition: all 0.3s ease-in-out;
     max-width: 600px;
     width: 100%;
-    text-align: left; /* Alineación izquierda */
+    text-align: center;
     cursor: pointer;
     border: none;
     position: relative;
     margin: 20px auto; /* Centrar en la invitación */
+    flex-wrap: wrap;
 }
 
-.boton-calendario:hover {
-    background-color: #E3E6E1;
-    transform: scale(1.03);
-}
-
-/* Estilo de la imagen a la izquierda */
+/* Estilo del icono del calendario */
 .boton-calendario img {
-    width: 80px; /* Tamaño más grande */
+    width: 70px; /* Tamaño ajustado */
     height: auto;
-    margin-right: 20px; /* Espacio entre la imagen y el texto */
+    margin-right: 15px;
 }
 
-/* Contenedor del texto y la fecha */
+/* Contenedor del texto */
 .texto-calendario {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alineación izquierda */
+    align-items: center; /* Centrar el texto */
+    text-align: center;
 }
 
 /* Estilo de la fecha */
 .fecha-boda {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-family: 'Great Vibes', cursive;
     font-weight: bold;
-    color: #4C5F56; /* Verde oscuro */
-    margin-top: 5px; /* Espaciado entre texto y fecha */
+    color: #4C5F56;
+    margin-top: 5px;
 }
 
-/* Centrar todo el contenedor */
-.contenedor-calendario {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+/* 🎯 RESPONSIVE */
+
+/* Ajustes para tablets y móviles (hasta 768px) */
+@media (max-width: 768px) {
+    .boton-calendario {
+        flex-direction: column; /* Apilar elementos */
+        padding: 12px 20px;
+        max-width: 90%;
+    }
+
+    .boton-calendario img {
+        width: 60px; /* Reduce el icono */
+        margin-bottom: 5px;
+    }
+
+    .fecha-boda {
+        font-size: 2rem;
+    }
 }
+
+/* Ajustes para móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+    .boton-calendario {
+        padding: 10px 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .boton-calendario img {
+        width: 50px; /* Reduce aún más el icono */
+        margin-bottom: 5px;
+    }
+
+    .fecha-boda {
+        font-size: 1.8rem;
+    }
+
+    .texto-calendario span {
+        font-size: 1.2rem; /* Tamaño más pequeño */
+    }
+}
+
+
 
 .galeria {
     width: 80%;

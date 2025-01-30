@@ -93,35 +93,41 @@
     margin-top: 40px; /* Baja todo el grupo de letras */
 }
 
+/* Contenedor del nombre y botón */
 .nombre-boda-container {
-    background-color: #EEF0EC; /* Fondo del itinerario */
+    background-color: #EEF0EC;
     padding: 40px 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    width: 100%;
+    justify-content: center;
     position: relative;
 }
 
+/* Ajuste del nombre */
 .nombre-boda {
     font-family: 'Great Vibes', cursive;
-    font-size: 9rem;
-    font-weight: 400;
-    color: #4C5F56; /* Verde oscuro */
+    font-size: 8rem;
+    color: #4C5F56;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    margin-top: 20px;
+    gap: 10px;
     position: relative;
 }
 
 /* Ajuste de "Jaidden" */
 .nombre-jaidden {
     font-size: 7rem;
-    position: absolute;
-    left: 30%;
-    top: -20px; /* 🔼 Sube un poco más */
+    position: relative;
+    top: -10px; /* Mueve un poco más arriba */
+}
+
+/* Ajuste de "Camila" */
+.nombre-camila {
+    font-size: 7rem;
+    position: relative;
+    top: 10px; /* Baja un poco */
 }
 
 /* Ajuste del "&" */
@@ -131,13 +137,57 @@
     z-index: 2;
 }
 
-/* Ajuste de "Camila" */
-.nombre-camila {
-    font-size: 7rem;
-    position: absolute;
-    right: 30%;
-    top: 30px; /* 🔽 Baja un poco más */
+/* Contenedor del botón de música */
+.boton-musica-container {
+    margin-top: 10px; /* Ajusta la distancia del nombre */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
+
+/* Botón de música más elegante y más cerca del texto */
+.boton-musica {
+    background-color: #C3E4DD;
+    border: none;
+    border-radius: 50%;
+    width: 60px; /* Tamaño más elegante */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Efecto de hover */
+.boton-musica:hover {
+    background-color: #A8D8CC;
+    transform: scale(1.1);
+}
+
+/* Icono dentro del botón */
+.boton-musica i {
+    font-size: 1.5rem;
+    color: #4C5F56;
+}
+
+/* Efecto cuando está reproduciendo */
+.boton-musica.reproduciendo {
+    background-color: #A8D8CC;
+}
+
+/* Texto debajo del botón */
+.texto-musica {
+    font-size: 1rem;
+    color: #4C5F56;
+    font-family: 'Playfair Display', serif;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
 
 /* 📱 Ajustes Responsivos para móviles */
 @media (max-width: 768px) {
@@ -391,40 +441,8 @@
         color: #4C5F56; /* Verde oscuro */
     }
 
+      
 
-        /* Diseño del botón de música */
-        .boton-musica-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px auto;
-        }
-
-        .boton-musica {
-            background-color: #C3E4DD; /* Verde menta */
-            color: #4C5F56; /* Verde oscuro */
-            border: 2px solid #FFFFFF; /* Blanco */
-            border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .boton-musica:hover {
-            background-color: #A8D8CC; /* Verde menta más oscuro */
-            transform: scale(1.1);
-        }
-
-        .boton-musica i {
-            font-size: 1.8rem;
-            color: #4C5F56; /* Verde oscuro */
-        }
 
         .detalles-boda {
             text-align: center;
@@ -864,26 +882,29 @@
             <p class="fecha">Octubre 2025</p>
         </div>
     </header>
-    
 
-    <section id="detalles" class="contenido-principal">
-        <img src="static/images/boda.jpg" alt="Imagen de boda">
-        <div class="nombre-boda-container">
-            <h2 class="nombre-boda">
-                <span class="nombre-jaidden">Jaidden</span>
-                <span class="ampersand">&</span>
-                <span class="nombre-camila">Camila</span>
-            </h2>
-        </div>
-        
-        
-        
+    <div class="nombre-boda-container">
+        <h2 class="nombre-boda">
+            <span class="nombre-jaidden">Jaidden</span>
+            <span class="ampersand">&</span>
+            <span class="nombre-camila">Camila</span>
+        </h2>
+        <!-- Botón de música ahora dentro del contenedor del nombre -->
         <div class="boton-musica-container">
             <button class="boton-musica" onclick="toggleMusic()">
                 <i class="fas fa-play"></i>
             </button>
-            <p style="font-size: 1rem; color: #4C5F56;">Reproduce nuestra canción</p>
+            <p class="texto-musica">Reproduce nuestra canción</p>
         </div>
+    </div>
+    
+    <!-- Audio de la música -->
+    <audio id="musica" src="static/music/musica.mp3" loop></audio>
+    
+    
+
+
+        
         <p>Dios nos unió con un propósito y nos mantendrá unidos por la misma razón.</p>
     </section>
 
@@ -1058,20 +1079,26 @@
     </footer>
 
     <audio id="musica" src="static/music/musica.mp3" loop></audio>
+
     <script>
         const musica = document.getElementById('musica');
-        let musicaReproduciendo = false;
-
+        const botonMusica = document.querySelector('.boton-musica');
+    
         function toggleMusic() {
-            if (musicaReproduciendo) {
-                musica.pause();
-                document.querySelector('.boton-musica i').classList.replace('fa-pause', 'fa-play');
-            } else {
+            if (musica.paused) {
                 musica.play();
-                document.querySelector('.boton-musica i').classList.replace('fa-play', 'fa-pause');
+                botonMusica.classList.add('reproduciendo'); 
+                botonMusica.innerHTML = '<i class="fas fa-pause"></i>'; // Cambia el icono a pausa
+            } else {
+                musica.pause();
+                botonMusica.classList.remove('reproduciendo'); 
+                botonMusica.innerHTML = '<i class="fas fa-play"></i>'; // Vuelve al icono de play
             }
-            musicaReproduciendo = !musicaReproduciendo;
         }
+    </script>
+    
+    
+    <script>
 
         const eventoFecha = new Date("2025-10-25T15:00:00").getTime();
         function actualizarTiempo() {

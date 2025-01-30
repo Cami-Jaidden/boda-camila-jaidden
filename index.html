@@ -7,6 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
     <style>
        body {
             margin: 0;
@@ -16,14 +22,15 @@
             text-align: center;
         }
                 .titulo-principal {
-            font-family: 'Cormorant', serif;
-            font-size: 1.8rem; /* Un poco más grande */
-            color: #4C5F56;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 10px; /* Más separación debajo */
+            font-family: 'Great Vibes', cursive; /* Fuente más elegante */
+            font-size: 2.3rem; /* Más pequeño pero destacando */
+            color: #FFFFFF; /* Blanco */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+            font-weight: 400;
+            margin-bottom: 5px; /* Menos espacio debajo */
         }
+
+
 
                 h2.titulo-principal {
             font-family: 'Cormorant', serif; /* Misma fuente del botón */
@@ -73,12 +80,33 @@
         }
 
                 .letra-grande {
-            font-size: 8rem; /* Más grande que el resto */
+            font-size: 5rem !important; /* Aumenta el tamaño */
             font-family: 'Great Vibes', cursive;
-            font-weight: bold;
-            margin: 30px 0; /* Más espacio arriba y abajo */
-            display: block;
-            line-height: 1.2; /* Ajuste para que no se vea muy apretado */
+            font-weight: 400;
+            color: #FFFFFF; /* Blanco */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin: 0 auto; /* Centrado */
+            display: flex; /* Asegura que se centre correctamente */
+            justify-content: center; /* Centrado horizontal */
+            align-items: center; /* Centrado vertical */
+            text-align: center; /* Asegura el centrado */
+            width: 100%; /* Usa todo el ancho disponible */
+            line-height: 1; /* Reduce la altura entre líneas */
+        }
+
+
+
+                .boton-principal {
+            font-family: 'Cormorant', serif;
+            font-size: 1.4rem; /* Más compacto */
+            margin-top: 5px; /* Reduce espacio superior */
+            padding: 10px 28px; /* Botón más compacto */
+            border-radius: 20px; /* Bordes más suaves */
+            display: inline-block;
+            background-color: #C3E4DD; /* Verde menta */
+            color: #4C5F56;
+            border: 2px solid #FFFFFF;
+            text-shadow: none;
         }
 
 
@@ -104,15 +132,25 @@
                 header .contenido-portada {
             text-align: center;
             background-color: rgba(195, 228, 221, 0.85); /* Fondo semitransparente */
-            padding: 40px 35px; /* Reduce un poco el padding */
-            border-radius: 20px; /* Bordes suaves */
+            padding: 25px 20px; /* Reduce el padding */
+            border-radius: 15px; /* Bordes más suaves */
             width: 50%; /* Ajuste de ancho */
-            max-width: 300px; /* No más grande que esto */
+            max-width: 400px; /* Evita que sea demasiado grande */
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.8px; /* Espaciado menor entre elementos */
+            gap: 12px; /* Espaciado uniforme */
         }
+
+                .verde-destacado {
+            color: #4C5F56 !important; /* Verde oscuro */
+            font-size: 5rem; /* Tamaño adecuado */
+            font-family: 'Great Vibes', cursive; /* Fuente elegante */
+            text-align: center; /* Centrado */
+            font-weight: 400;
+            margin: 0 auto;
+        }
+
 
 
 
@@ -165,35 +203,36 @@
             margin-bottom: 20px;
         }
 
-        .contador {
-            text-align: center;
-            padding: 40px;
-            background-color: #F5F5DC; /* Beige claro */
-        }
+            .contador {
+        text-align: center;
+        padding: 30px; /* Reducir el padding */
+        background-color: #F5F5DC; /* Beige claro */
+    }
 
-        .contador h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #4C5F56; /* Verde oscuro */
-        }
+    .contador h2 {
+        font-size: 2rem; /* Reducir el tamaño del título */
+        margin-bottom: 10px;
+    }
 
-        .contador .tiempo {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+    .contador .tiempo {
+        display: flex;
+        justify-content: center;
+        gap: 15px; /* Reduce el espacio entre los elementos */
+    }
 
-        .contador .tiempo div span {
-            font-size: 2.5rem;
-            display: block;
-            color: #4C5F56; /* Verde oscuro */
-        }
+    .contador .tiempo div span {
+        font-size: 2rem; /* Reducir tamaño de los números */
+        font-weight: bold;
+        display: block;
+        color: #4C5F56; /* Verde oscuro */
+    }
 
-        .contador .tiempo div p {
-            font-size: 1rem;
-            margin: 0;
-            color: #4C5F56; /* Verde oscuro */
-        }
+    .contador .tiempo div p {
+        font-size: 0.9rem; /* Reducir la descripción (Días, Horas, Minutos, Segundos) */
+        margin: 0;
+        color: #4C5F56; /* Verde oscuro */
+    }
+
 
         /* Diseño del botón de música */
         .boton-musica-container {
@@ -260,6 +299,33 @@
     object-fit: cover; /* Ajusta la imagen sin deformarla */
     border-radius: 10px;
 }
+
+/* Contenedor de los colores debajo de cada vestimenta */
+.vestimenta-colores {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Cada círculo de color (clickeable) */
+.color-circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid #4C5F56; /* Verde oscuro */
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+}
+
+/* Efecto al pasar el mouse */
+.color-circle:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
 
 
         .vestimenta-item h3 {
@@ -330,28 +396,60 @@
         }
 
         .itinerario .item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            width: 100%;
-            max-width: 600px;
-            background-color: #FFFFFF; /* Blanco */
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Asegura que el icono de ubicación esté alineado a la derecha */
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    background-color: #FFFFFF; /* Blanco */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
 
-        .itinerario .item .icono {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #4C5F56; /* Verde oscuro */
-            color: #FFFFFF; /* Blanco */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-        }
+/* Icono de la ceremonia (a la izquierda) */
+.itinerario .item .icono {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4C5F56; /* Verde oscuro */
+    color: #FFFFFF; /* Blanco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+/* Contenedor del texto */
+.itinerario .contenido {
+    flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+    text-align: left;
+}
+
+/* Icono de ubicación a la derecha */
+.itinerario .ubicacion {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4C5F56; /* Mismo verde del icono de la iglesia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.itinerario .ubicacion i {
+    color: #FFFFFF; /* Blanco */
+    font-size: 1.5rem;
+}
+
+.itinerario .ubicacion:hover {
+    background-color: #3A4C44; /* Un tono más oscuro al pasar el cursor */
+}
+
 
         .itinerario .item .contenido h3 {
             margin: 0;
@@ -366,26 +464,125 @@
             text-align: center;
             padding: 20px;
         }
+
+        .boton-calendario {
+    display: flex;
+    align-items: center; /* Alineación vertical */
+    justify-content: center;
+    background-color: #F8F9F6; /* Color suave */
+    color: #4C5F56; /* Verde oscuro */
+    border-radius: 25px;
+    padding: 20px 40px; /* Espaciado */
+    font-size: 1.6rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    max-width: 600px;
+    width: 100%;
+    text-align: left; /* Alineación izquierda */
+    cursor: pointer;
+    border: none;
+    position: relative;
+    margin: 20px auto; /* Centrar en la invitación */
+}
+
+.boton-calendario:hover {
+    background-color: #E3E6E1;
+    transform: scale(1.03);
+}
+
+/* Estilo de la imagen a la izquierda */
+.boton-calendario img {
+    width: 80px; /* Tamaño más grande */
+    height: auto;
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+}
+
+/* Contenedor del texto y la fecha */
+.texto-calendario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alineación izquierda */
+}
+
+/* Estilo de la fecha */
+.fecha-boda {
+    font-size: 3rem;
+    font-family: 'Great Vibes', cursive;
+    font-weight: bold;
+    color: #4C5F56; /* Verde oscuro */
+    margin-top: 5px; /* Espaciado entre texto y fecha */
+}
+
+/* Centrar todo el contenedor */
+.contenedor-calendario {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.galeria {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.swiper-slide img:hover {
+    transform: scale(1.05);
+}
+
+/* Personalización de botones */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #4C5F56; /* Verde oscuro */
+}
+
+/* Personalización de la paginación */
+.swiper-pagination-bullet {
+    background: #4C5F56;
+}
+
+.swiper-pagination-bullet-active {
+    background: #A8D8CC; /* Verde menta */
+}
+
+
+
+
     </style>
 </head>
 <body>
     <header id="inicio">
         <div class="contenido-portada">
-            <h2 class="titulo-principal">Nuestra Historia</h2>
-
+            <h2 class="titulo-principal">Nuestra historia</h2>
             <p class="letra-grande">J & C</p>
-            <p></p>
-            <p></p>
             <a href="#detalles" class="boton-principal">¡Nuestra Boda!</a>
-            <p></p>
-            <p></p>
-            <p>Octubre 2025</p>
+            <p class="fecha">Octubre 2025</p>
         </div>
     </header>
+    
 
     <section id="detalles" class="contenido-principal">
         <img src="static/images/boda.jpg" alt="Imagen de boda">
-        <p class="letra-grande">Jaidden & Camila</p>
+        <p class="verde-destacado">Jaidden & Camila</p>
         <div class="boton-musica-container">
             <button class="boton-musica" onclick="toggleMusic()">
                 <i class="fas fa-play"></i>
@@ -394,6 +591,23 @@
         </div>
         <p>Dios nos unió con un propósito y nos mantendrá unidos por la misma razón.</p>
     </section>
+
+
+
+    <div class="contenedor-calendario">
+        <a href="#" class="boton-calendario" onclick="agendarCalendario()">
+            <img src="static/images/25.jpg" alt="Fecha Boda">
+            <div class="texto-calendario">
+                <span>Agéndate en tu calendario</span>
+                <span class="fecha-boda">25 de Octubre de 2025</span>
+            </div>
+        </a>
+    </div>
+    
+    
+    
+    
+
 
     <section class="contador">
         <h5>Cuenta regresiva para nuestro día especial</h5>
@@ -417,34 +631,45 @@
         </div>
     </section>
 
-    <section class="detalles-boda">
-        <h4>Código de Vestimenta</h4>
-        <div class="vestimenta-container">
-            <div class="vestimenta-item">
-                <a href="https://www.pinterest.com/search/pins/?q=smoking" target="_blank">
-                    <img src="static/images/smoking-dibujo.jpg" alt="Smoking">
-                </a>
-                <h3>Smoking</h3>
+    <section class="galeria">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="static/images/foto1.jpg" alt="Foto 1"></div>
+                <div class="swiper-slide"><img src="static/images/foto2.jpg" alt="Foto 2"></div>
+                <div class="swiper-slide"><img src="static/images/foto3.jpg" alt="Foto 3"></div>
+                <div class="swiper-slide"><img src="static/images/foto4.jpg" alt="Foto 4"></div>
+                <div class="swiper-slide"><img src="static/images/foto5.jpg" alt="Foto 5"></div>
             </div>
-            <div class="vestimenta-item">
-                <a href="https://www.pinterest.com/search/pins/?q=vestido+largo" target="_blank">
-                    <img src="static/images/vestido-largo-dibujo.jpg" alt="Vestido Largo">
-                </a>
-                <h3>Vestido Largo</h3>
-            </div>
+            <!-- Botones de navegación -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <!-- Paginación -->
+            <div class="swiper-pagination"></div>
         </div>
     </section>
-
+    
+        
+ 
+    
     <section class="itinerario">
         <h4>Itinerario</h4>
         <div class="item">
+            <!-- Icono de la iglesia a la izquierda -->
             <div class="icono">
                 <i class="fas fa-church"></i>
             </div>
+    
+            <!-- Contenido del evento -->
             <div class="contenido">
                 <h3>Ceremonia</h3>
                 <p>3:00 PM - Capilla La China</p>
             </div>
+    
+            <!-- Icono de ubicación a la derecha con link -->
+            <a href="https://www.google.com/maps/place/Capilla+La+China" target="_blank" class="ubicacion">
+                <i class="fas fa-map-marker-alt"></i>
+            </a>
+        </div>
         </div>
         <div class="item">
             <div class="icono">
@@ -474,6 +699,64 @@
             </div>
         </div>
     </section>
+
+
+    <section class="detalles-boda">
+    <h4>Código de Vestimenta</h4>
+    <div class="vestimenta-container">
+
+        <!-- Smoking -->
+        <div class="vestimenta-item">
+            <a href="https://www.pinterest.com/search/pins/?q=smoking" target="_blank">
+                <img src="static/images/smoking-dibujo.jpg" alt="Smoking">
+            </a>
+            <h3>Smoking</h3>
+
+            <!-- Círculos de colores con enlaces -->
+            <div class="vestimenta-colores">
+                <a href="https://www.pinterest.com/search/pins/?q=traje+negro" target="_blank">
+                    <div class="color-circle" style="background-color: #000000;"></div> <!-- Negro -->
+                </a>
+                <a href="https://www.pinterest.com/search/pins/?q=traje+verde+oscuro" target="_blank">
+                    <div class="color-circle" style="background-color: #4C5F56;"></div> <!-- Verde Oscuro -->
+                </a>
+                <a href="https://www.pinterest.com/search/pins/?q=traje+gris+oscuro" target="_blank">
+                    <div class="color-circle" style="background-color: #7D7D7D;"></div> <!-- Gris Oscuro -->
+                </a>
+                <a href="https://www.pinterest.com/search/pins/?q=traje+beige" target="_blank">
+                    <div class="color-circle" style="background-color: #D4C8BE;"></div> <!-- Beige -->
+                </a>
+            </div>
+        </div>
+
+        <!-- Vestido Largo -->
+        <div class="vestimenta-item">
+            <a href="https://www.pinterest.com/search/pins/?q=vestido+largo" target="_blank">
+                <img src="static/images/vestido-largo-dibujo.jpg" alt="Vestido Largo">
+            </a>
+            <h3>Vestido Largo</h3>
+
+            <!-- Círculos de colores con enlaces -->
+            <div class="vestimenta-colores">
+                <a href="https://www.pinterest.com/search/pins/?q=vestido+beige" target="_blank">
+                    <div class="color-circle" style="background-color: #F5F5DC;"></div> <!-- Beige Claro -->
+                </a>
+                <a href="https://www.pinterest.com/search/pins/?q=vestido+verde+menta" target="_blank">
+                    <div class="color-circle" style="background-color: #C3E4DD;"></div> <!-- Verde Menta -->
+                </a>
+                <a href="https://www.pinterest.com/search/pins/?q=vestido+verde+oscuro" target="_blank">
+                    <div class="color-circle" style="background-color: #A8D8CC;"></div> <!-- Verde Menta Oscuro -->
+                </a>
+                <a href="https://www.pinterest.com/search/pins/?q=vestido+blanco" target="_blank">
+                    <div class="color-circle" style="background-color: #FFFFFF; border: 1px solid #ddd;"></div> <!-- Blanco -->
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+    
 
     <footer>
         <p>Con mucho amor, Camila & Jaidden</p>
@@ -513,5 +796,77 @@
 
         setInterval(actualizarTiempo, 1000);
     </script>
+
+<script>
+    function agendarCalendario() {
+    const eventTitle = encodeURIComponent("Boda de Camila & Jaidden");
+    const eventLocation = encodeURIComponent("Capilla La China");
+    const eventStart = "20251025T150000"; // Formato estándar YYYYMMDDTHHMMSS
+    const eventEnd = "20251025T180000"; 
+
+    // Detectar si es iPhone o Android
+    const userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.includes("iphone") || userAgent.includes("ipad")) {
+        window.location.href = `data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:${eventTitle}%0D%0ALOCATION:${eventLocation}%0D%0ADTSTART:${eventStart}%0D%0ADTEND:${eventEnd}%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR`;
+    } else {
+        // Google Calendar (Para Android y otros dispositivos)
+        const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&location=${eventLocation}&dates=${eventStart}/${eventEnd}`;
+        window.open(googleCalendarUrl, "_blank");
+    }
+}
+
+    </script>
+    <script>
+        var swiper = new Swiper(".swiper-container", {
+            slidesPerView: 3,  /* Cantidad de imágenes visibles */
+            spaceBetween: 20,  /* Espacio entre imágenes */
+            loop: true,  /* Hace que el carrusel sea infinito */
+            autoplay: {
+                delay: 2500,  /* Tiempo entre cada cambio de imagen (2.5s) */
+                disableOnInteraction: false, /* Que siga automático después de hacer clic */
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    
+        // Ampliar imagen al hacer clic
+        document.querySelectorAll('.swiper-slide img').forEach(img => {
+            img.addEventListener('click', function() {
+                const modal = document.createElement("div");
+                modal.style.position = "fixed";
+                modal.style.top = "0";
+                modal.style.left = "0";
+                modal.style.width = "100%";
+                modal.style.height = "100%";
+                modal.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+                modal.style.display = "flex";
+                modal.style.justifyContent = "center";
+                modal.style.alignItems = "center";
+                modal.style.zIndex = "1000";
+    
+                const imgElement = document.createElement("img");
+                imgElement.src = this.src;
+                imgElement.style.maxWidth = "90%";
+                imgElement.style.maxHeight = "90%";
+                imgElement.style.borderRadius = "10px";
+                imgElement.style.boxShadow = "0px 4px 6px rgba(0,0,0,0.3)";
+    
+                modal.appendChild(imgElement);
+                document.body.appendChild(modal);
+    
+                // Cerrar modal al hacer clic en cualquier parte
+                modal.addEventListener("click", function() {
+                    modal.remove();
+                });
+            });
+        });
+    </script>
+    
 </body>
 </html>

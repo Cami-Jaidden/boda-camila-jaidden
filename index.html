@@ -92,84 +92,89 @@
     width: 100%;
     margin-top: 40px; /* Baja todo el grupo de letras */
 }
-
 .nombre-grande {
+    font-family: 'Great Vibes', cursive; /* Mantiene la tipografía */
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    line-height: 1.2;
+    line-height: 1.2; /* Ajuste del espaciado */
+    position: relative;
     width: 100%;
-    gap: 10px; /* Espaciado entre letras */
+    margin-top: 40px; /* Ajuste de margen */
 }
 
 .nombre {
-    display: inline-block;
+    display: block;
     position: relative;
 }
 
-/* Ajuste de "Jaidden" */
+/* 🔹 Ajuste de "Jaidden" */
 .nombre-jaidden {
-    font-size: 8rem;
+    text-align: left;
+    font-size: 9rem; /* Tamaño grande como en "J & C" */
     position: absolute;
-    left: 10%;
+    left: 15%; /* Ajuste de posición */
+    top: -30px;
 }
 
-/* Ajuste de "&" */
+/* 🔹 Ajuste de "&" */
 .nombre-y {
-    font-size: 7rem;
+    text-align: center;
+    font-size: 8rem; /* Tamaño similar a "J & C" */
     position: relative;
+    top: 10px;
 }
 
-/* Ajuste de "Camila" */
+/* 🔹 Ajuste de "Camila" */
 .nombre-camila {
-    font-size: 8rem;
+    text-align: right;
+    font-size: 9rem; /* Igual que Jaidden */
     position: absolute;
-    right: 10%;
+    right: 15%; /* Ajuste de posición */
+    top: 45px;
 }
 
 /* ✅ Ajustes para móviles */
 @media (max-width: 768px) {
-    .nombre-grande {
-        flex-direction: row;
-        gap: 5px;
-    }
-
     .nombre-jaidden {
-        font-size: 6rem;
-        left: 5%;
+        font-size: 7rem;
+        left: 10%;
+        top: -20px;
     }
 
     .nombre-y {
-        font-size: 5.5rem;
+        font-size: 6rem;
+        top: 5px;
+    }
+
+    .nombre-camila {
+        font-size: 7rem;
+        right: 10%;
+        top: 30px;
+    }
+}
+
+/* ✅ Ajustes para pantallas pequeñas (480px) */
+@media (max-width: 480px) {
+    .nombre-jaidden {
+        font-size: 6rem;
+        left: 5%;
+        top: -15px;
+    }
+
+    .nombre-y {
+        font-size: 5rem;
+        top: 0px;
     }
 
     .nombre-camila {
         font-size: 6rem;
         right: 5%;
+        top: 20px;
     }
 }
 
-/* ✅ Ajustes para pantallas muy pequeñas */
-@media (max-width: 480px) {
-    .nombre-grande {
-        gap: 2px;
-    }
-
-    .nombre-jaidden {
-        font-size: 5rem;
-        left: 3%;
-    }
-
-    .nombre-y {
-        font-size: 4rem;
-    }
-
-    .nombre-camila {
-        font-size: 5rem;
-        right: 3%;
-    }
-}
 
 
 .letra {
@@ -849,6 +854,7 @@
             <span class="nombre nombre-y">&</span>
             <span class="nombre nombre-camila">Camila</span>
         </p>
+        
         
         
         <div class="boton-musica-container">

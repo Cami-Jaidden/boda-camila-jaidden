@@ -264,38 +264,52 @@
             color: #4C5F56; /* Verde oscuro */
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
     .vestimenta-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-evenly; /* Distribuye uniformemente */
-        flex-direction: row; /* Asegura disposición en fila */
+        justify-content: center;
+        gap: 15px;
     }
     
     .vestimenta-item {
-        width: 48%; /* Hace que ocupen casi la mitad del ancho */
+        width: 40%; /* Se asegura que en pantallas más grandes sigan en fila */
+    }
+}
+
+@media (max-width: 768px) {
+    .vestimenta-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .vestimenta-item {
+        width: 45%; /* Mantiene los elementos en fila en móviles */
         padding: 10px;
-        box-sizing: border-box; /* Evita que los bordes afecten el ancho */
+        box-sizing: border-box; /* Evita que los bordes agranden el elemento */
     }
     
     .vestimenta-item img {
         width: 100%;
         height: auto;
     }
-    
-    .vestimenta-item h3 {
-        font-size: 1.2rem;
-    }
 }
 
 @media (max-width: 480px) {
     .vestimenta-container {
-        justify-content: space-around; /* Más compacto en móviles pequeños */
+        flex-direction: row; /* Asegura que estén en línea */
+        flex-wrap: wrap;
+        justify-content: space-around; /* Evita que se acumulen en una sola columna */
+        gap: 5px;
     }
-    
+
     .vestimenta-item {
-        width: 47%;
+        width: 47%; /* Ocupa el 47% del ancho para dejar espacio */
     }
+
+
 
 
         }

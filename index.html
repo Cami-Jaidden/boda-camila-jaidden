@@ -92,85 +92,105 @@
     width: 100%;
     margin-top: 40px; /* Baja todo el grupo de letras */
 }
-.nombre-grande {
-    font-family: 'Great Vibes', cursive;
+
+.nombre-boda-container {
+    background-color: #EEF0EC; /* Fondo del itinerario */
+    padding: 40px 20px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.nombre-boda {
+    font-family: 'Great Vibes', cursive;
+    font-size: 9rem;
+    font-weight: 400;
+    color: #4C5F56; /* Verde oscuro */
+    display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1.2;
-    position: relative;
     width: 100%;
-    margin-top: 40px;
-}
-
-/* 🔹 Estilos generales */
-.nombre {
-    display: block;
+    margin-top: 20px;
     position: relative;
 }
 
-/* 🔹 Ajuste de "Jaidden" */
+/* Ajuste de "Jaidden" */
 .nombre-jaidden {
-    text-align: left;
-    font-size: 9rem;
+    font-size: 7rem;
     position: absolute;
-    left: 10%;
-    top: -30px;
+    left: 30%;
+    top: -10px;
 }
 
-/* 🔹 Ajuste de "&" */
-.nombre-y {
-    text-align: center;
+/* Ajuste del "&" */
+.ampersand {
     font-size: 8rem;
     position: relative;
-    top: 10px;
+    z-index: 2;
 }
 
-/* 🔹 Ajuste de "Camila" */
+/* Ajuste de "Camila" */
 .nombre-camila {
-    text-align: right;
-    font-size: 9rem;
+    font-size: 7rem;
     position: absolute;
-    right: 10%;
-    top: 40px;
+    right: 30%;
+    top: 15px;
 }
 
-/* ✅ Ajustes en móviles */
+/* 📱 Ajustes Responsivos para móviles */
 @media (max-width: 768px) {
-    .nombre-grande {
-        flex-direction: row; /* En móviles, alineamos horizontalmente */
-        justify-content: center;
-        gap: 10px;
+    .nombre-boda {
+        font-size: 6rem;
         margin-top: 20px;
     }
 
-    .nombre-jaidden, .nombre-camila {
-        font-size: 6rem; /* Reduce el tamaño en móvil */
-        position: static; /* Elimina la posición absoluta */
-        text-align: center; /* Centra los nombres */
+    .nombre-jaidden {
+        font-size: 5rem;
+        left: 35%; /* Más cerca de la & */
+        top: -5px;
     }
 
-    .nombre-y {
+    .ampersand {
+        font-size: 6rem;
+        top: 0;
+    }
+
+    .nombre-camila {
         font-size: 5rem;
-        position: static;
-        text-align: center;
+        right: 35%; /* Más cerca de la & */
+        top: 10px;
     }
 }
 
-/* ✅ Ajustes para pantallas pequeñas (480px) */
+/* 🔹 Para pantallas menores a 480px */
 @media (max-width: 480px) {
-    .nombre-grande {
-        flex-direction: row;
-        gap: 5px;
-    }
-
-    .nombre-jaidden, .nombre-camila {
+    .nombre-boda {
         font-size: 5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .nombre-y {
+    .nombre-jaidden {
         font-size: 4rem;
+        position: relative;
+        left: auto;
+        top: 0;
+    }
+
+    .ampersand {
+        font-size: 5rem;
+        position: relative;
+        top: 0;
+    }
+
+    .nombre-camila {
+        font-size: 4rem;
+        position: relative;
+        right: auto;
+        top: 0;
     }
 }
 
@@ -848,11 +868,14 @@
 
     <section id="detalles" class="contenido-principal">
         <img src="static/images/boda.jpg" alt="Imagen de boda">
-        <p class="nombre-grande">
-            <span class="nombre nombre-jaidden">Jaidden</span>
-            <span class="nombre nombre-y">&</span>
-            <span class="nombre nombre-camila">Camila</span>
-        </p>
+        <div class="nombre-boda-container">
+            <h2 class="nombre-boda">
+                <span class="nombre-jaidden">Jaidden</span>
+                <span class="ampersand">&</span>
+                <span class="nombre-camila">Camila</span>
+            </h2>
+        </div>
+        
         
         
         <div class="boton-musica-container">

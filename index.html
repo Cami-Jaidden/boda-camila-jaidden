@@ -93,110 +93,89 @@
     margin-top: 40px; /* Baja todo el grupo de letras */
 }
 
-.nombre-boda-container {
-    background-color: #EEF0EC; /* Fondo del itinerario */
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    position: relative;
-}
-
-.nombre-boda {
+.nombre-grande {
     font-family: 'Great Vibes', cursive;
-    font-size: 9rem;
-    font-weight: 400;
-    color: #4C5F56; /* Verde oscuro */
+    font-size: 9rem; /* Tamaño base */
+    color: #4C5F56;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     line-height: 1.2;
     position: relative;
     width: 100%;
-    margin-top: 40px;
+    gap: 10px; /* Espaciado entre letras */
+}
+
+.nombre {
+    display: inline-block;
+    position: relative;
 }
 
 /* Ajuste de "Jaidden" */
 .nombre-jaidden {
-    text-align: left;
-    font-size: 7rem;
-    position: absolute;
-    left: 20%;
-    top: -30px;
-}
-
-/* Ajuste del "&" */
-.ampersand {
-    text-align: center;
     font-size: 8rem;
     position: relative;
-    top: 10px;
+    left: -30px; /* Mueve más a la izquierda */
+}
+
+/* Ajuste de "&" */
+.nombre-y {
+    font-size: 7rem;
+    position: relative;
+    top: 10px; /* Ajuste fino para centrar */
 }
 
 /* Ajuste de "Camila" */
 .nombre-camila {
-    text-align: right;
-    font-size: 7rem;
-    position: absolute;
-    right: 20%;
-    top: 45px;
+    font-size: 8rem;
+    position: relative;
+    right: -30px; /* Mueve más a la derecha */
 }
 
-/* 📱 Ajustes Responsivos para móviles */
+/* Ajustes responsivos para móviles */
 @media (max-width: 768px) {
-    .nombre-boda {
-        font-size: 6rem;
-        margin-top: 20px;
+    .nombre-grande {
+        font-size: 7rem;
+        flex-direction: row; /* Asegura que no se apile */
+        gap: 5px; /* Reduce el espaciado */
     }
 
     .nombre-jaidden {
-        font-size: 5rem;
-        left: 15%; /* Más cerca de la & */
-        top: -20px;
+        font-size: 6rem;
+        left: -20px;
     }
 
-    .ampersand {
-        font-size: 6rem;
+    .nombre-y {
+        font-size: 5.5rem;
         top: 5px;
     }
 
     .nombre-camila {
-        font-size: 5rem;
-        right: 15%; /* Más cerca de la & */
-        top: 25px;
+        font-size: 6rem;
+        right: -20px;
     }
 }
 
-/* 🔹 Para pantallas menores a 480px */
 @media (max-width: 480px) {
-    .nombre-boda {
+    .nombre-grande {
         font-size: 5rem;
-        margin-top: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        gap: 2px; /* Ajuste fino */
     }
 
     .nombre-jaidden {
-        font-size: 4rem;
-        position: relative;
-        left: auto;
-        top: 0;
+        font-size: 4.5rem;
+        left: -15px;
     }
 
-    .ampersand {
-        font-size: 5rem;
-        position: relative;
-        top: 0;
+    .nombre-y {
+        font-size: 4rem;
+        top: 2px;
     }
 
     .nombre-camila {
-        font-size: 4rem;
-        position: relative;
-        right: auto;
-        top: 0;
+        font-size: 4.5rem;
+        right: -15px;
     }
 }
 

@@ -1069,6 +1069,35 @@
             </div>
         </div>
     </div>
+    <section id="confirmacion">
+        <h2>Confirma tu asistencia</h2>
+        <form id="confirmacion-form">
+            <input type="text" name="nombre" placeholder="Tu Nombre" required>
+            <input type="email" name="correo" placeholder="Tu Correo" required>
+            <select name="asistencia" required>
+                <option value="" disabled selected>¿Asistirás?</option>
+                <option value="Sí">Sí</option>
+                <option value="No">No</option>
+            </select>
+            <button type="submit">Confirmar Asistencia</button>
+        </form>
+    </section>
+    
+    <script>
+    document.getElementById("confirmacion-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+    
+        let formData = new FormData(this);
+        fetch("https://tu-servidor.com/confirmar", {  // Reemplaza con la URL de tu API Flask
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => alert(data.mensaje))
+        .catch(error => console.error("Error:", error));
+    });
+    </script>
+    
 </section>
 
     

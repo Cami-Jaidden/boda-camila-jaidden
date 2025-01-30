@@ -79,20 +79,61 @@
             color: #4C5F56; /* Verde oscuro */
         }
 
-                .letra-grande {
-            font-size: 5rem !important; /* Aumenta el tamaño */
-            font-family: 'Great Vibes', cursive;
-            font-weight: 400;
-            color: #FFFFFF; /* Blanco */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            margin: 0 auto; /* Centrado */
-            display: flex; /* Asegura que se centre correctamente */
-            justify-content: center; /* Centrado horizontal */
-            align-items: center; /* Centrado vertical */
-            text-align: center; /* Asegura el centrado */
-            width: 100%; /* Usa todo el ancho disponible */
-            line-height: 1; /* Reduce la altura entre líneas */
-        }
+        .letra-grande {
+    font-family: 'Great Vibes', cursive;
+    font-size: 9rem; /* Tamaño base de la & */
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2; /* Espaciado entre letras */
+    position: relative;
+    width: 100%;
+    margin-top: 40px; /* Baja todo el grupo de letras */
+}
+
+.letra {
+    display: block;
+    position: relative;
+}
+
+/* Ajuste de la "J" */
+.letra-j {
+    text-align: left;
+    font-size: 7rem; /* Aumenta el tamaño de la J */
+    position: absolute;
+    left: 20%;
+    top: -30px; /* Baja la J */
+}
+
+/* Ajuste de la "&" */
+.letra-y {
+    text-align: center;
+    font-size: 8rem; /* Mantiene el tamaño de la & */
+    top: 10px; /* Baja la & */
+    position: relative;
+}
+
+/* Ajuste de la "C" */
+.letra-c {
+    text-align: right;
+    font-size: 7rem; /* Aumenta el tamaño de la C */
+    position: absolute;
+    right: 20%;
+    top: 45px; /* Baja la C */
+}
+
+/* Ajuste del título "NUESTRA HISTORIA" */
+.titulo-principal {
+    margin-bottom: 50px; /* Aumenta la separación con J & C */
+}
+
+
+
+
+
+
 
 
 
@@ -352,6 +393,64 @@
     }
 }
 
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .letra-grande {
+        font-size: 6rem; /* Reduce el tamaño del texto en móviles */
+        margin-top: 20px; /* Baja el grupo de letras menos */
+    }
+
+    .letra-j {
+        font-size: 5rem; /* Reduce tamaño */
+        left: 10%; /* Mueve más al centro en móviles */
+        top: -20px; /* Ajuste fino */
+    }
+
+    .letra-y {
+        font-size: 6rem; /* Reduce tamaño */
+        top: 5px; /* Ajuste fino */
+    }
+
+    .letra-c {
+        font-size: 5rem; /* Reduce tamaño */
+        right: 10%; /* Mueve más al centro */
+        top: 25px; /* Ajuste fino */
+    }
+
+    .titulo-principal {
+        margin-bottom: 30px; /* Menos espacio en móviles */
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas (teléfonos compactos) */
+@media (max-width: 480px) {
+    .letra-grande {
+        font-size: 5rem; /* Reduce aún más */
+        margin-top: 15px;
+    }
+
+    .letra-j {
+        font-size: 4rem;
+        left: 5%;
+        top: -15px;
+    }
+
+    .letra-y {
+        font-size: 5rem;
+        top: 0px;
+    }
+
+    .letra-c {
+        font-size: 4rem;
+        right: 5%;
+        top: 15px;
+    }
+
+    .titulo-principal {
+        margin-bottom: 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .vestimenta-container {
         display: flex;
@@ -585,7 +684,13 @@
     <header id="inicio">
         <div class="contenido-portada">
             <h2 class="titulo-principal">Nuestra historia</h2>
-            <p class="letra-grande">J & C</p>
+            <p class="letra-grande">
+                <span class="letra letra-j">J</span>
+                <span class="letra letra-y">&</span>
+                <span class="letra letra-c">C</span>
+            </p>
+            
+            
             <a href="#detalles" class="boton-principal">¡Nuestra Boda!</a>
             <p class="fecha">Octubre 2025</p>
         </div>

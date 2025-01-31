@@ -1,46 +1,37 @@
-from flask import Flask, request, render_template, jsonify
-import smtplib
-from email.mime.text import MIMEText
-import sqlite3  # Puedes cambiarlo por MySQL si quieres
+import requests
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Ruta del formulario
-@app.route('/')
-def index():
-    return render_template('index.html')
+# URL de tu Google Apps Script desplegado
+GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/XXXXXXXXXXXXXXXXXXXXXXX/exec"
 
-# Ruta para recibir confirmaciones de asistencia
-@app.route('/confirmar', methods=['POST'])
-def confirmar():
-    nombre = request.form['nombre']
-    correo = request.form['correo']
-    mensaje = f"Hola {nombre}, gracias por confirmar tu asistencia a nuestra boda."
+@app.route('/confirmar_asistencia', methods=['POST'])
+def confirmar_asistencia():
+    try:
+        # Obtener datos del formulario
+        nombre = request.form.get('nombre')
+        asistencia = request.form.get('asistencia')
+        telefono = request.form.get('telefono')
+        correo = request.form.get('correo')
 
-    # Guardar en la base de datos
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO confirmaciones (nombre, correo) VALUES (?, ?)", (nombre, correo))
-    conn.commit()
-    conn.close()
+        if not nombre or not correo:
+            return jsonify({"error": "Faltan datos obligatorios"}), 400
 
-    # Enviar correo de confirmación
-    enviar_correo(correo, mensaje)
+        # Enviar datos al Google Apps Script
+        datos = {
+            "name": nombre,
+            "attendance": asistencia,
+            "phone": telefono,
+            "email": correo
+        }
+        
+        respuesta = requests.post(GOOGLE_SCRIPT_URL, json=datos, headers={"Content-Type": "application/json"})
 
-    return jsonify({'mensaje': 'Confirmación recibida y correo enviado'})
+        return jsonify(respuesta.json()), respuesta.status_code
 
-# Función para enviar correos
-def enviar_correo(destinatario, mensaje):
-    remitente = "tu.correo@gmail.com"
-    contraseña = "tu-contraseña"
-    msg = MIMEText(mensaje)
-    msg['Subject'] = "Confirmación de Asistencia"
-    msg['From'] = remitente
-    msg['To'] = destinatario
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
-        server.login(remitente, contraseña)
-        server.sendmail(remitente, destinatario, msg.as_string())
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)

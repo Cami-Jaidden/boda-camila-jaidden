@@ -1069,34 +1069,36 @@
             </div>
         </div>
     </div>
-    <section id="confirmacion">
-        <h2>Confirma tu asistencia</h2>
-        <form id="confirmacion-form">
-            <input type="text" name="nombre" placeholder="Tu Nombre" required>
-            <input type="email" name="correo" placeholder="Tu Correo" required>
-            <select name="asistencia" required>
-                <option value="" disabled selected>¿Asistirás?</option>
+    
+    <section class="confirmacion">
+        <h4>Confirma tu asistencia</h4>
+        <form id="confirmacionForm">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+    
+            <label for="asistencia">¿Asistirás?</label>
+            <select id="asistencia" name="asistencia" required>
                 <option value="Sí">Sí</option>
                 <option value="No">No</option>
             </select>
+    
+            <label for="acompanantes">Número de Acompañantes:</label>
+            <input type="number" id="acompanantes" name="acompanantes" min="0" value="0">
+    
+            <label for="telefono">Número de Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required>
+    
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+    
             <button type="submit">Confirmar Asistencia</button>
         </form>
+    
+        <p id="mensajeConfirmacion" style="display:none; color:green; font-weight:bold;">
+            ¡Gracias por confirmar tu asistencia! 🎉
+        </p>
     </section>
     
-    <script>
-    document.getElementById("confirmacion-form").addEventListener("submit", function(event) {
-        event.preventDefault();
-    
-        let formData = new FormData(this);
-        fetch("https://tu-servidor.com/confirmar", {  // Reemplaza con la URL de tu API Flask
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => alert(data.mensaje))
-        .catch(error => console.error("Error:", error));
-    });
-    </script>
     
 </section>
 
@@ -1230,6 +1232,54 @@
                 modal.addEventListener("click", function() {
                     modal.remove();
                 });
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("confirmacionForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evitar recargar la página
+    
+            // Capturar los valores del formulario
+            var nombre = document.getElementById("nombre").value;
+            var asistencia = document.getElementById("asistencia").value;
+            var acompanantes = document.getElementById("acompanantes").value;
+            var telefono = document.getElementById("telefono").value;
+            var correo = document.getElementById("correo").value;
+    
+            // URL de tu Google Apps Script (Reemplázala con tu propia URL)
+            var url = "https://script.google.com/macros/s/AKfycbynnkQDpZd9S0nA6kPnJCvtbRIa5P3ofpe7rEYlaiYlqvuqWBDHT62pHWQLksE2wk3sw/exec";
+    
+            // Datos a enviar
+            var datos = {
+                name: nombre,
+                attendance: asistencia,
+                companions: parseInt(acompanantes, 10),
+                phone: telefono,
+                email: correo
+            };
+    
+            // Enviar la solicitud POST
+            fetch(url, {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(datos)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Respuesta del servidor:", data);
+                if (data.status === "success") {
+                    document.getElementById("mensajeConfirmacion").style.display = "block";
+                    document.getElementById("confirmacionForm").reset();
+                } else {
+                    alert("Hubo un error al enviar la confirmación. Inténtalo nuevamente.");
+                }
+            })
+            .catch(error => {
+                console.error("Error al enviar los datos:", error);
+                alert("Ocurrió un error. Por favor, intenta de nuevo.");
             });
         });
     </script>

@@ -1237,51 +1237,51 @@
     </script>
     <script>
         document.getElementById("confirmacionForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Evitar recargar la página
-    
-            // Capturar los valores del formulario
-            var nombre = document.getElementById("nombre").value;
-            var asistencia = document.getElementById("asistencia").value;
-            var acompanantes = document.getElementById("acompanantes").value;
-            var telefono = document.getElementById("telefono").value;
-            var correo = document.getElementById("correo").value;
-    
-            // URL de tu Google Apps Script (Reemplázala con tu propia URL)
-            var url = "https://script.google.com/macros/s/AKfycbxFOmhsp33GmlPNOjRry3lXs3fdvtYSHRgJrd9nt4r0G7ONpq0xYf7o1g_V8LrFmMzHPw/exec";
-    
-            // Datos a enviar
-            var datos = {
-                name: nombre,
-                attendance: asistencia,
-                companions: parseInt(acompanantes, 10),
-                phone: telefono,
-                email: correo
-            };
-    
-            // Enviar la solicitud POST
-            fetch(url, {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(datos)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Respuesta del servidor:", data);
-                if (data.status === "success") {
-                    document.getElementById("mensajeConfirmacion").style.display = "block";
-                    document.getElementById("confirmacionForm").reset();
-                } else {
-                    alert("Hubo un error al enviar la confirmación. Inténtalo nuevamente.");
-                }
-            })
-            .catch(error => {
-                console.error("Error al enviar los datos:", error);
-                alert("Ocurrió un error. Por favor, intenta de nuevo.");
-            });
-        });
+    event.preventDefault(); // Evitar recargar la página
+
+    // Capturar los valores del formulario
+    var nombre = document.getElementById("nombre").value;
+    var asistencia = document.getElementById("asistencia").value;
+    var acompanantes = document.getElementById("acompanantes").value;
+    var telefono = document.getElementById("telefono").value;
+    var correo = document.getElementById("correo").value;
+
+    // URL de tu Google Apps Script
+    var url = "https://script.google.com/macros/s/AKfycbxFOmhsp33GmlPNOjRry3lXs3fdvtYSHRgJrd9nt4r0G7ONpq0xYf7o1g_V8LrFmMzHPw/exec";
+
+    // Datos a enviar
+    var datos = {
+        name: nombre,
+        attendance: asistencia,
+        companions: parseInt(acompanantes, 10),
+        phone: telefono,
+        email: correo
+    };
+
+    // Enviar la solicitud POST con control de errores
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(datos)
+    })
+    .then(response => response.json().catch(() => {}))  // Captura errores si no hay JSON
+    .then(data => {
+        console.log("Respuesta del servidor:", data);
+        if (data && data.status === "success") {
+            document.getElementById("mensajeConfirmacion").style.display = "block";
+            document.getElementById("confirmacionForm").reset();
+        } else {
+            alert("Hubo un error al enviar la confirmación. Inténtalo nuevamente.");
+        }
+    })
+    .catch(error => {
+        console.error("Error al enviar los datos:", error);
+        alert("Ocurrió un error. Por favor, intenta de nuevo.");
+    });
+});
+
     </script>
     
 </body>

@@ -812,6 +812,34 @@
     }
 }
 
+.collage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    grid-gap: 10px; /* Espacio entre imágenes */
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.collage img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Bordes redondeados */
+    object-fit: cover;
+}
+
+/* Para que se vea bien en móviles */
+@media (max-width: 768px) {
+    .collage {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .collage {
+        grid-template-columns: repeat(1, 1fr); /* 1 columna en pantallas muy pequeñas */
+    }
+}
 
 
 .galeria {
@@ -947,6 +975,19 @@
         </div>
     </section>
 
+
+    <section class="galeria">
+        <div class="collage">
+            <img src="static/images/IMG_8143.JPG" alt="Foto 1">
+            <img src="static/images/IMG_8145.JPG" alt="Foto 2">
+            <img src="static/images/IMG_8147.JPG" alt="Foto 3">
+            <img src="static/images/IMG_8149.JPG" alt="Foto 4">
+            <img src="static/images/IMG_8151.JPG" alt="Foto 5">
+        </div>
+    </section>
+    
+
+    
     <section class="galeria">
         <div class="swiper-container">
             <div class="swiper-wrapper">

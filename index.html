@@ -842,57 +842,6 @@
 }
 
 
-.galeria {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px 0;
-    text-align: center;
-}
-
-.swiper-container {
-    width: 100%;
-    max-width: 1200px;
-    height: auto;
-    overflow: hidden;
-}
-
-.swiper-slide img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .swiper-slide img {
-        height: 200px; /* Reduce el tamaño de las imágenes en móviles */
-    }
-}
-
-
-.swiper-slide img:hover {
-    transform: scale(1.05);
-}
-
-/* Personalización de botones */
-.swiper-button-next,
-.swiper-button-prev {
-    color: #4C5F56; /* Verde oscuro */
-}
-
-/* Personalización de la paginación */
-.swiper-pagination-bullet {
-    background: #4C5F56;
-}
-
-.swiper-pagination-bullet-active {
-    background: #A8D8CC; /* Verde menta */
-}
-
-
-
-
     </style>
 </head>
 <body>
@@ -988,22 +937,6 @@
     
 
     
-    <section class="galeria">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="static/images/IMG_8143.JPG" alt="Foto 1"></div>
-                <div class="swiper-slide"><img src="static/images/IMG_8145.JPG" alt="Foto 2"></div>
-                <div class="swiper-slide"><img src="static/images/IMG_8147.JPG" alt="Foto 3"></div>
-                <div class="swiper-slide"><img src="static/images/IMG_8149.JPG" alt="Foto 4"></div>
-                <div class="swiper-slide"><img src="static/images/IMG_8151.JPG" alt="Foto 5"></div>
-            </div>
-            <!-- Botones de navegación -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <!-- Paginación -->
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
     
         
  
@@ -1211,37 +1144,7 @@
 
     </script>
     <script>
-        var swiper = new Swiper(".swiper-container", {
-    slidesPerView: 3,  /* En PC se ven 3 imágenes */
-    spaceBetween: 20,  /* Espacio entre imágenes */
-    loop: true,  
-    autoplay: {
-        delay: 2500, 
-        disableOnInteraction: false, 
-    },
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-        1024: { /* Pantallas grandes (PC) */
-            slidesPerView: 3,
-            spaceBetween: 20
-        },
-        768: { /* Tablets */
-            slidesPerView: 2,
-            spaceBetween: 15
-        },
-        480: { /* Celulares */
-            slidesPerView: 2,  /* Ahora en móviles se ven 2 imágenes */
-            spaceBetween: 10
-        }
-    }
-});
+        
 
     
         // Ampliar imagen al hacer clic

@@ -1190,42 +1190,38 @@
     <p id="mensajeConfirmacion" style="display:none; color: green;">Confirmación enviada con éxito.</p>
 
     <script>
-       document.getElementById("confirmacionForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Evita que se recargue la página
+       document.getElementById("miFormulario").addEventListener("submit", function (event) {
+  event.preventDefault(); // Evita que el formulario recargue la página
 
-    let datos = {
-        nombre: document.getElementById("nombre").value,
-        asistencia: document.getElementById("asistencia").value,
-        acompanantes: document.getElementById("acompanantes").value || 0,
-        telefono: document.getElementById("telefono").value || "N/A",
-        email: document.getElementById("correo").value
-    };
+  // Capturar los valores del formulario
+  let formData = {
+    name: document.getElementById("nombre").value,
+    attendance: document.getElementById("asistencia").value,
+    phone: document.getElementById("telefono").value,
+    email: document.getElementById("correo").value,
+  };
 
-    console.log("Enviando datos:", datos);
+  console.log("Enviando datos:", formData); // Debug en consola
 
-    fetch("https://script.google.com/macros/s/AKfycbwe5pZENvf_sUmvK-jeuWsLEJK9fHb17vf0jvCp3OY4WnUPQSILNdS0T6fxS13gz8JGuQ/exec", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(datos)
-    })
-    .then(response => response.json()) // Convertir la respuesta a JSON
+  fetch("https://script.google.com/macros/s/AKfycbwe5pZENvf_sUmvK-jeuWsLEJK9fHb17vf0jvCp3OY4WnUPQSILNdS0T6fxS13gz8JGuQ/exec", {
+    method: "POST",
+    mode: "cors", // Para evitar errores de CORS
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  })
+    .then(response => response.json())
     .then(data => {
-        console.log("Respuesta del servidor:", data);
-
-        if (data.estado === "OK") {
-            document.getElementById("mensajeConfirmacion").style.display = "block";
-            document.getElementById("confirmacionForm").reset();
-        } else {
-            alert("Error: " + (data.mensaje || "No se pudo enviar la confirmación."));
-        }
+      console.log("Respuesta recibida:", data);
+      alert("Datos enviados correctamente");
     })
     .catch(error => {
-        console.error("Error en la solicitud:", error);
-        alert("Error al enviar la confirmación.");
+      console.error("Error en la solicitud:", error);
+      alert("Hubo un error al enviar los datos.");
     });
 });
+
 
 
       

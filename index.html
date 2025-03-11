@@ -818,7 +818,7 @@
 
 .collage {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
     grid-gap: 10px; /* Espacio entre imágenes */
     padding: 20px;
     max-width: 900px;
@@ -936,6 +936,9 @@
             <img src="static/images/IMG_8147.JPG" alt="Foto 3">
             <img src="static/images/IMG_8149.JPG" alt="Foto 4">
             <img src="static/images/IMG_8151.JPG" alt="Foto 5">
+            <img src="static/images/IMG_8142.JPG" alt="Foto 6">
+            <img src="static/images/IMG_8148.JPG" alt="Foto 7">
+            <img src="static/images/IMG_8150.JPG" alt="Foto 8">
         </div>
     </section>
     
@@ -1052,34 +1055,6 @@
         </div>
     </div>
     
-    <section class="confirmacion">
-        <h4>Confirma tu asistencia</h4>
-        <form id="confirmacionForm">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-    
-            <label for="asistencia">¿Asistirás?</label>
-            <select id="asistencia" name="asistencia" required>
-                <option value="Sí">Sí</option>
-                <option value="No">No</option>
-            </select>
-    
-            <label for="acompanantes">Número de Acompañantes:</label>
-            <input type="number" id="acompanantes" name="acompanantes" min="0" value="0">
-    
-            <label for="telefono">Número de Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" required>
-    
-            <label for="correo">Correo Electrónico:</label>
-            <input type="email" id="correo" name="correo" required>
-    
-            <button type="submit">Confirmar Asistencia</button>
-        </form>
-    
-        <p id="mensajeConfirmacion" style="display:none; color:green; font-weight:bold;">
-            ¡Gracias por confirmar tu asistencia! 🎉
-        </p>
-    </section>
     
     
 </section>
@@ -1186,55 +1161,75 @@
                 });
             });
         });
+
+
+
     </script>
+    
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Asistencia</title>
+</head>
+<body>
+    <h2>Confirmación de Asistencia</h2>
+    <form id="confirmacionForm">
+        <input type="text" id="nombre" placeholder="Nombre" required><br>
+        <select id="asistencia" required>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select><br>
+        <input type="number" id="acompanantes" placeholder="Número de acompañantes"><br>
+        <input type="tel" id="telefono" placeholder="Teléfono"><br>
+        <input type="email" id="correo" placeholder="Correo Electrónico" required><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <p id="mensajeConfirmacion" style="display:none; color: green;">Confirmación enviada con éxito.</p>
+
     <script>
-        document.getElementById("confirmacionForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Evitar recargar la página
+       document.getElementById("confirmacionForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Evita que se recargue la página
 
-    // Capturar los valores del formulario
-    var nombre = document.getElementById("nombre").value;
-    var asistencia = document.getElementById("asistencia").value;
-    var acompanantes = document.getElementById("acompanantes").value;
-    var telefono = document.getElementById("telefono").value;
-    var correo = document.getElementById("correo").value;
-
-    // URL de tu Google Apps Script
-    var url = "https://script.google.com/macros/s/AKfycbxFOmhsp33GmlPNOjRry3lXs3fdvtYSHRgJrd9nt4r0G7ONpq0xYf7o1g_V8LrFmMzHPw/exec";
-
-    // Datos a enviar
-    var datos = {
-        name: nombre,
-        attendance: asistencia,
-        companions: parseInt(acompanantes, 10),
-        phone: telefono,
-        email: correo
+    let datos = {
+        nombre: document.getElementById("nombre").value,
+        asistencia: document.getElementById("asistencia").value,
+        acompanantes: document.getElementById("acompanantes").value || 0,
+        telefono: document.getElementById("telefono").value || "N/A",
+        email: document.getElementById("correo").value
     };
 
-    // Enviar la solicitud POST con control de errores
-    fetch(url, {
+    console.log("Enviando datos:", datos);
+
+    fetch("https://script.google.com/macros/s/AKfycbziPJIuYvFkIylq0O54XyfPrGowjx9irlxlkEDJ4zSp19okowkURMnqWpD0nhlYFRCwXQ/exec", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(datos)
     })
-    .then(response => response.json().catch(() => {}))  // Captura errores si no hay JSON
+    .then(response => response.json()) // Convertir la respuesta a JSON
     .then(data => {
         console.log("Respuesta del servidor:", data);
-        if (data && data.status === "success") {
+
+        if (data.estado === "OK") {
             document.getElementById("mensajeConfirmacion").style.display = "block";
             document.getElementById("confirmacionForm").reset();
         } else {
-            alert("Hubo un error al enviar la confirmación. Inténtalo nuevamente.");
+            alert("Error: " + (data.mensaje || "No se pudo enviar la confirmación."));
         }
     })
     .catch(error => {
-        console.error("Error al enviar los datos:", error);
-        alert("Ocurrió un error. Por favor, intenta de nuevo.");
+        console.error("Error en la solicitud:", error);
+        alert("Error al enviar la confirmación.");
     });
 });
 
+
+      
     </script>
-    
+
 </body>
 </html>

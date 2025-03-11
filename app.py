@@ -1,35 +1,32 @@
 import requests
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # Importar Flask-CORS
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})  # Habilitar CORS para todos los dominios
 
 # URL de tu Google Apps Script desplegado
-GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/XXXXXXXXXXXXXXXXXXXXXXX/exec"
+GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwe5pZENvf_sUmvK-jeuWsLEJK9fHb17vf0jvCp3OY4WnUPQSILNdS0T6fxS13gz8JGuQ/exec"
 
 @app.route('/confirmar_asistencia', methods=['POST'])
 def confirmar_asistencia():
     try:
-        # Obtener datos del formulario
-        nombre = request.form.get('nombre')
-        asistencia = request.form.get('asistencia')
-        telefono = request.form.get('telefono')
-        correo = request.form.get('correo')
+        datos = request.get_json()
 
-        if not nombre or not correo:
+        # Validar datos obligatorios
+        if not datos or 'nombre' not in datos or 'email' not in datos:
             return jsonify({"error": "Faltan datos obligatorios"}), 400
 
-        # Enviar datos al Google Apps Script
-        datos = {
-            "name": nombre,
-            "attendance": asistencia,
-            "phone": telefono,
-            "email": correo
-        }
-        
-        respuesta = requests.post(GOOGLE_SCRIPT_URL, json=datos, headers={"Content-Type": "application/json"})
+        # Enviar datos a Google Sheets
+        respuesta = requests.post(GOOGLE_SCRIPT_URL, json=datos)
+
+        # Verificar si la solicitud fue exitosa
+        respuesta.raise_for_status()  # Lanza un error si el código no es 200
 
         return jsonify(respuesta.json()), respuesta.status_code
 
+    except requests.exceptions.RequestException as e:
+        return jsonify({"error": f"Error de conexión con Google Script: {str(e)}"}), 500
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

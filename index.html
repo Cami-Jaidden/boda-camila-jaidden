@@ -1174,29 +1174,35 @@
     <body>
         <h2>Confirmación de Asistencia</h2>
 
-<form id="confirmationForm">
-    <label for="name">Nombre:</label>
-    <input type="text" id="name" name="name" required><br><br>
-
-    <label for="attendance">¿Asistirá?</label>
-    <select id="attendance" name="attendance" required>
-        <option value="Sí">Sí</option>
-        <option value="No">No</option>
-    </select><br><br>
-
-    <label for="companions">Número de acompañantes:</label>
-    <input type="number" id="companions" name="companions" min="0"><br><br>
-
-    <label for="phone">Teléfono:</label>
-    <input type="tel" id="phone" name="phone"><br><br>
-
-    <label for="email">Correo Electrónico:</label>
-    <input type="email" id="email" name="email" required><br><br>
-
-    <button type="submit">Confirmar Asistencia</button>
-</form>
-
-<p id="mensajeConfirmacion" style="display:none; color: green;">Confirmación enviada con éxito 🎉</p>
+        <form id="confirmationForm">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required><br><br>
+        
+            <label for="attendance">¿Asistirá?</label>
+            <select id="attendance" name="attendance" required>
+                <option value="Sí">Sí</option>
+                <option value="No">No</option>
+            </select><br><br>
+        
+            <label for="companions">Número de acompañantes:</label>
+            <input type="number" id="companions" name="companions" min="0"><br><br>
+        
+            <label for="phone">Teléfono:</label>
+            <input type="tel" id="phone" name="phone"><br><br>
+        
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required><br><br>
+        
+            <button type="submit">Confirmar Asistencia</button>
+        </form>
+        
+        <p id="mensajeConfirmacion" style="display:none; color: green;">Confirmación enviada con éxito 🎉</p>
+        
+    
+        <!-- Script JS -->
+        <script src="app.js"></script>
+        <script src="firebase-config.js"></script>
+        <script src="static/js/script.js"></script>
 
       
     </script>

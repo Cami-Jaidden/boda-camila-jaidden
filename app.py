@@ -1,34 +1,41 @@
-import requests
-from flask import Flask, request, jsonify
-from flask_cors import CORS  # Importar Flask-CORS
+from flask import Flask, render_template, request, redirect
+import openpyxl
+import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})  # Habilitar CORS para todos los dominios
 
-# URL de tu Google Apps Script desplegado
-GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwe5pZENvf_sUmvK-jeuWsLEJK9fHb17vf0jvCp3OY4WnUPQSILNdS0T6fxS13gz8JGuQ/exec"
+# Ruta para la página principal
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-@app.route('/confirmar_asistencia', methods=['POST'])
-def confirmar_asistencia():
-    try:
-        datos = request.get_json()
+# Ruta para la página del formulario de confirmación
+@app.route('/confirmacion')
+def confirmacion():
+    return render_template('confirmacion.html')
 
-        # Validar datos obligatorios
-        if not datos or 'nombre' not in datos or 'email' not in datos:
-            return jsonify({"error": "Faltan datos obligatorios"}), 400
+# Ruta para manejar la confirmación y guardar en Excel
+@app.route('/confirmar', methods=['POST'])
+def confirmar():
+    nombre = request.form['nombre']
+    asistencia = request.form['asistencia']
+    acompanantes = request.form['acompanantes']
 
-        # Enviar datos a Google Sheets
-        respuesta = requests.post(GOOGLE_SCRIPT_URL, json=datos)
+    # Cargar o crear archivo Excel
+    file_path = 'data/confirmaciones.xlsx'
+    if not os.path.exists(file_path):
+        wb = openpyxl.Workbook()
+        sheet = wb.active
+        sheet.append(["Nombre", "Asistencia", "Acompañantes"])
+        wb.save(file_path)
 
-        # Verificar si la solicitud fue exitosa
-        respuesta.raise_for_status()  # Lanza un error si el código no es 200
+    # Guardar los datos en el archivo Excel
+    wb = openpyxl.load_workbook(file_path)
+    sheet = wb.active
+    sheet.append([nombre, asistencia, acompanantes])
+    wb.save(file_path)
 
-        return jsonify(respuesta.json()), respuesta.status_code
+    return redirect('/')
 
-    except requests.exceptions.RequestException as e:
-        return jsonify({"error": f"Error de conexión con Google Script: {str(e)}"}), 500
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)

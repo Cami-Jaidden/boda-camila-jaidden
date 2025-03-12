@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cami-jaidden.github.io/boda-camila-jaidden/app.js"></script>
-    <script src="https://cami-jaidden.github.io/boda-camila-jaidden/firebase-config.js"></script>
+    <script src="https://cami-jaidden.github.io/boda-camila-jaidden/static/js/app.js"></script>
+    <script src="https://cami-jaidden.github.io/boda-camila-jaidden/static/js/firebase-config.js"></script>
+
 
     
 
@@ -1167,38 +1168,82 @@
 
     </script>
     
+    <<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Confirmación de Asistencia</title>
+        <link rel="stylesheet" href="style.css"> <!-- Asegúrate de agregar tu CSS si tienes -->
+    </head>
     <body>
         <h2>Confirmación de Asistencia</h2>
-
+    
+        <!-- Formulario de Confirmación -->
         <form id="confirmationForm">
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" required><br><br>
-        
+    
             <label for="attendance">¿Asistirá?</label>
             <select id="attendance" name="attendance" required>
                 <option value="Sí">Sí</option>
                 <option value="No">No</option>
             </select><br><br>
-        
+    
             <label for="companions">Número de acompañantes:</label>
             <input type="number" id="companions" name="companions" min="0"><br><br>
-        
+    
             <label for="phone">Teléfono:</label>
-            <input type="tel" id="phone" name="phone"><br><br>
-        
+            <input type="tel" id="phone" name="phone" placeholder="Ej: 3123456789" pattern="[0-9]{10}" title="Número de teléfono válido (10 dígitos)"><br><br>
+    
             <label for="email">Correo Electrónico:</label>
             <input type="email" id="email" name="email" required><br><br>
-        
+    
             <button type="submit">Confirmar Asistencia</button>
         </form>
-        
+    
+        <!-- Mensaje de Confirmación (oculto por defecto) -->
         <p id="mensajeConfirmacion" style="display:none; color: green;">Confirmación enviada con éxito 🎉</p>
-        
     
         <!-- Script JS -->
-        <script src="app.js"></script>
-        <script src="firebase-config.js"></script>
-        <script src="static/js/script.js"></script>
+        <script src="static/js/app.js"></script> <!-- Ruta de tu archivo de Firebase -->
+        <script src="static/js/firebase-config.js"></script> <!-- Ruta de tu configuración de Firebase -->
+        <script src="static/js/script.js"></script> <!-- Tu script principal con la lógica -->
+    
+        <script>
+            // Esta parte es solo un ejemplo de cómo mostrar el mensaje de éxito en la pantalla
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("confirmationForm").addEventListener("submit", function(e) {
+                    e.preventDefault(); // Evita que la página se recargue
+    
+                    let formData = {
+                        name: document.getElementById("name").value,
+                        attendance: document.getElementById("attendance").value,
+                        companions: document.getElementById("companions").value || "0",
+                        phone: document.getElementById("phone").value || "N/A",
+                        email: document.getElementById("email").value,
+                        timestamp: new Date().toISOString()
+                    };
+    
+                    console.log("Enviando datos a Firebase:", formData);
+    
+                    // Guardar en Firebase Realtime Database
+                    push(ref(database, "confirmaciones"), formData)
+                        .then(() => {
+                            // Mostrar el mensaje de confirmación
+                            document.getElementById("mensajeConfirmacion").style.display = "block";
+                            document.getElementById("confirmationForm").reset(); // Limpiar el formulario
+                        })
+                        .catch(error => {
+                            console.error("Error al guardar:", error);
+                            alert("Hubo un error al guardar la confirmación.");
+                        });
+                });
+            });
+        </script>
+    </body>
+    </html>
+    
 
       
     </script>

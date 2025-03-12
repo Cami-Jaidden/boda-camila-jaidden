@@ -1069,11 +1069,6 @@
 
     
     
-
-    <footer>
-        
-    </footer>
-
     <audio id="musica" src="static/music/musica.mp3" loop></audio>
 
     <script>
@@ -1134,122 +1129,206 @@
 }
 
     </script>
-    <script>
-        
+   
+   <section class="confirmation-section">
+    <div class="confirmation-container">
+        <div class="confirmation-info">
+            <h2 class="confirmation-title">Confirmar asistencia</h2>
+            <p class="confirmation-text">
+                Por favor, comunícanos tu asistencia cuanto antes para organizar todos los detalles del evento. ¡Gracias!
+            </p>
+        </div>
+        <form id="confirmationForm" class="confirmation-form">
+            <div class="form-group double-input">
+                <div>
+                    <label for="name">Nombre *</label>
+                    <input type="text" id="name" name="name" placeholder="Nombre" required>
+                </div>
+                <div>
+                    <label for="lastname">Apellidos *</label>
+                    <input type="text" id="lastname" name="lastname" placeholder="Apellidos" required>
+                </div>
+            </div>
 
-    
-        // Ampliar imagen al hacer clic
-        document.querySelectorAll('.swiper-slide img').forEach(img => {
-            img.addEventListener('click', function() {
-                const modal = document.createElement("div");
-                modal.style.position = "fixed";
-                modal.style.top = "0";
-                modal.style.left = "0";
-                modal.style.width = "100%";
-                modal.style.height = "100%";
-                modal.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-                modal.style.display = "flex";
-                modal.style.justifyContent = "center";
-                modal.style.alignItems = "center";
-                modal.style.zIndex = "1000";
-    
-                const imgElement = document.createElement("img");
-                imgElement.src = this.src;
-                imgElement.style.maxWidth = "90%";
-                imgElement.style.maxHeight = "90%";
-                imgElement.style.borderRadius = "10px";
-                imgElement.style.boxShadow = "0px 4px 6px rgba(0,0,0,0.3)";
-    
-                modal.appendChild(imgElement);
-                document.body.appendChild(modal);
-    
-                // Cerrar modal al hacer clic en cualquier parte
-                modal.addEventListener("click", function() {
-                    modal.remove();
-                });
-            });
-        });
+            <div class="form-group">
+                <label for="attendance">¿Asistirás? *</label>
+                <select id="attendance" name="attendance" required>
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
 
-    </script>
-    
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Confirmación de Asistencia</title>
-    </head>
-    <body>
-        <h2>Confirmación de Asistencia</h2>
-    
-        <!-- Formulario de Confirmación -->
-        <form id="confirmationForm">
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" required><br><br>
-    
-            <label for="attendance">¿Asistirá?</label>
-            <select id="attendance" name="attendance" required>
-                <option value="Sí">Sí</option>
-                <option value="No">No</option>
-            </select><br><br>
-    
-            <label for="companions">Número de acompañantes:</label>
-            <input type="number" id="companions" name="companions" min="0"><br><br>
-    
-            <label for="phone">Teléfono:</label>
-            <input type="tel" id="phone" name="phone" placeholder="Ej: 3123456789" pattern="[0-9]{10}" title="Número de teléfono válido (10 dígitos)"><br><br>
-    
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email" required><br><br>
-    
-            <button type="submit">Confirmar Asistencia</button>
+            <div class="form-group">
+                <label for="companions">¿Cuántos son? *</label>
+                <select id="companions" name="companions" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4+">4 o más</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Teléfono</label>
+                <input type="text" id="phone" name="phone" placeholder="Número de contacto">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Correo electrónico *</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="comments">Comentarios</label>
+                <textarea id="comments" name="comments" placeholder="Comentarios adicionales"></textarea>
+            </div>
+
+            <button type="submit" class="confirmation-btn">Enviar</button>
         </form>
-    
-        <!-- Mensaje de Confirmación (oculto por defecto) -->
-        <p id="mensajeConfirmacion" style="display:none; color: green;">Confirmación enviada con éxito 🎉</p>
-    
-        <!-- Script JS -->
-        <script src="static/js/app.js"></script> <!-- Ruta de tu archivo de Firebase -->
-        <script src="static/js/firebase-config.js"></script> <!-- Ruta de tu configuración de Firebase -->
-        <script src="static/js/script.js"></script> <!-- Tu script principal con la lógica -->
-    
-        <script>
-            // Esta parte es solo un ejemplo de cómo mostrar el mensaje de éxito en la pantalla
-            document.addEventListener("DOMContentLoaded", function() {
-                document.getElementById("confirmationForm").addEventListener("submit", function(e) {
-                    e.preventDefault(); // Evita que la página se recargue
-    
-                    let formData = {
-                        name: document.getElementById("name").value,
-                        attendance: document.getElementById("attendance").value,
-                        companions: document.getElementById("companions").value || "0",
-                        phone: document.getElementById("phone").value || "N/A",
-                        email: document.getElementById("email").value,
-                        timestamp: new Date().toISOString()
-                    };
-    
-                    console.log("Enviando datos a Firebase:", formData);
-    
-                    // Guardar en Firebase Realtime Database
-                    push(ref(database, "confirmaciones"), formData)
-                        .then(() => {
-                            // Mostrar el mensaje de confirmación
-                            document.getElementById("mensajeConfirmacion").style.display = "block";
-                            document.getElementById("confirmationForm").reset(); // Limpiar el formulario
-                        })
-                        .catch(error => {
-                            console.error("Error al guardar:", error);
-                            alert("Hubo un error al guardar la confirmación.");
-                        });
-                });
-            });
-        </script>
-    </body>
-    </html>
-    
+    </div>
+</section>
 
+<style>
+/* Sección principal */
+.confirmation-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #868F74;
+    padding: 40px;
+}
+
+/* Contenedor general */
+.confirmation-container {
+    display: flex;
+    flex-direction: column;
+    background: #6F745C; /* Ajuste de color */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Contenedor de información */
+.confirmation-info {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid white;
+}
+
+/* Estilos del título */
+.confirmation-title {
+    font-size: 28px;
+    font-family: "Dancing Script", cursive;
+    color: white;
+}
+
+/* Texto informativo */
+.confirmation-text {
+    font-size: 16px;
+    font-family: "Arial", sans-serif;
+    color: white;
+}
+
+/* Formulario */
+.confirmation-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Agrupar dos inputs en una fila */
+.double-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* En pantallas más grandes, los inputs estarán en línea */
+@media (min-width: 600px) {
+    .double-input {
+        flex-direction: row;
+    }
+}
+
+/* Campos del formulario */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Etiquetas */
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Inputs y selects */
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background: #F4F4F4;
+}
+
+/* Área de texto */
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* Botón de envío */
+.confirmation-btn {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s ease-in-out;
+}
+
+.confirmation-btn:hover {
+    background-color: white;
+    color: #6F745C;
+}
+
+/* Responsividad para pantallas más pequeñas */
+@media (max-width: 480px) {
+    .confirmation-container {
+        padding: 20px;
+    }
+    
+    .confirmation-title {
+        font-size: 24px;
+    }
+    
+    .confirmation-text {
+        font-size: 14px;
+    }
+    
+    .confirmation-btn {
+        font-size: 14px;
+    }
+}
+</style>
+
+   
+    
       
+    
     </script>
+    <footer>
+        
+    </footer>
+
+    
 
 </body>
 </html>

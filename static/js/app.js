@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function() {
             companions: document.getElementById("companions").value || "0",
             phone: document.getElementById("phone").value || "N/A",
             email: document.getElementById("email").value,
-            comments: document.getElementById("comments").value || "Sin comentarios",
             timestamp: new Date().toISOString() // Capturar fecha y hora del envío
         };
 

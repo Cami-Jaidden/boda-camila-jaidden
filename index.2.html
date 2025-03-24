@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cami-jaidden.github.io/boda-camila-jaidden/static/js/app.js"></script>
+    <script src="https://cami-jaidden.github.io/boda-camila-jaidden/static/js/firebase-config.js"></script>
+    <script type="module" src="static/js/app.js"></script>
+    <script type="module" src="static/js/firebase-config.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Meow+Script&display=swap" rel="stylesheet">
+
+
+
+
+
+
+
+    
+
+    <style>
+       body 
+       
+       {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            background-color: #d4d7c4; /* Beige claro */
+            color: #4C5F56; /* Verde oscuro */
+            text-align: center;
+        }
+
+                .contador {
+            background-color: #868F74; /* Color de fondo */
+            color: #FFFFFF; /* Color del texto */
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px; /* Bordes redondeados opcionales */
+        }
+                .titulo-principal {
+            font-family: 'Great Vibes', cursive; /* Fuente más elegante */
+            font-size: 2.3rem; /* Más pequeño pero destacando */
+            color: #FFFFFF; /* Blanco */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+            font-weight: 400;
+            margin-bottom: 5px; /* Menos espacio debajo */
+        }
+
+
+
+                h2.titulo-principal {
+            font-family: 'Cormorant', serif; /* Misma fuente del botón */
+            font-size: 1.5rem; /* Mismo tamaño */
+            color: #4C5F56; /* Mismo color */
+            text-transform: uppercase; /* Mayúsculas */
+            font-weight: 400; /* Mismo grosor del texto del botón */
+            letter-spacing: 1px; /* Espaciado similar */
+            margin: 10px 0;
+        }
+
+        
+
+
+        .contenido-portada h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+        }
+
+        .contenido-portada p {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+        }
+
+        .boton-principal {
+            font-family: 'Cormorant', serif;
+            font-size: 1.5rem;
+        }
+
+        h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        h4 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem; /* Más grande como título */
+            font-weight: bold;
+            color: #4C5F56; /* Verde oscuro */
+        }
+        h5 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem; /* Más grande como título */
+            
+            color: #4C5F56; /* Verde oscuro */
+        }
+
+        .letra-grande {
+    font-family: 'Great Vibes', cursive;
+    font-size: 9rem; /* Tamaño base de la & */
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2; /* Espaciado entre letras */
+    position: relative;
+    width: 100%;
+    margin-top: 40px; /* Baja todo el grupo de letras */
+}
+
+/* Contenedor del nombre y botón */
+.nombre-boda-container {
+    background-color: #EEF0EC;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.nombre-boda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Espaciado entre los nombres y el & */
+}
+
+.nombre-jaidden, .nombre-camila {
+    font-family: 'Meow Script', cursive;
+    font-size: 90px;
+    font-weight: bold;
+    color: #4C5F56; /* Puedes cambiar el color si lo deseas */
+}
+
+.ampersand {
+    font-family: 'Meow Script', cursive;
+    font-size: 90px;
+    font-weight: bold;
+    color: #4C5F56; /* Puedes cambiar el color para diferenciar */
+    margin: 0 10px; /* Espaciado alrededor del ampersand */
+}
+
+
+
+
+
+
+
+
+/* 📱 Ajustes Responsivos para móviles */
+@media (max-width: 768px) {
+    .nombre-boda {
+        font-size: 6rem;
+        margin-top: 20px;
+    }
+
+    .nombre-jaidden {
+        font-size: 5rem;
+        left: 35%;
+        top: -15px; /* 🔼 Ajuste fino */
+    }
+
+    .ampersand {
+        font-size: 6rem;
+        top: 0;
+    }
+
+    .nombre-camila {
+        font-size: 5rem;
+        right: 35%;
+        top: 20px; /* 🔽 Ajuste fino */
+    }
+}
+
+/* 🔹 Para pantallas menores a 480px */
+@media (max-width: 480px) {
+    .nombre-boda {
+        font-size: 5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nombre-jaidden {
+        font-size: 4rem;
+        position: relative;
+        left: auto;
+        top: -10px; /* 🔼 Ajuste fino */
+    }
+
+    .ampersand {
+        font-size: 5rem;
+        position: relative;
+        top: 0;
+    }
+
+    .nombre-camila {
+        font-size: 4rem;
+        position: relative;
+        right: auto;
+        top: 15px; /* 🔽 Ajuste fino */
+    }
+}
+
+
+
+.letra {
+    display: block;
+    position: relative;
+}
+
+/* Ajuste de la "J" */
+.letra-j {
+    text-align: left;
+    font-size: 7rem; /* Aumenta el tamaño de la J */
+    position: absolute;
+    left: 20%;
+    top: -30px; /* Baja la J */
+}
+
+/* Ajuste de la "&" */
+.letra-y {
+    text-align: center;
+    font-size: 8rem; /* Mantiene el tamaño de la & */
+    top: 10px; /* Baja la & */
+    position: relative;
+}
+
+/* Ajuste de la "C" */
+.letra-c {
+    text-align: right;
+    font-size: 7rem; /* Aumenta el tamaño de la C */
+    position: absolute;
+    right: 20%;
+    top: 45px; /* Baja la C */
+}
+
+/* Ajuste del título "NUESTRA HISTORIA" */
+.titulo-principal {
+    margin-bottom: 50px; /* Aumenta la separación con J & C */
+}
+
+
+
+                .boton-principal {
+            font-family: 'Cormorant', serif;
+            font-size: 1.4rem; /* Más compacto */
+            margin-top: 5px; /* Reduce espacio superior */
+            padding: 10px 28px; /* Botón más compacto */
+            border-radius: 20px; /* Bordes más suaves */
+            display: inline-block;
+            background-color: #C3E4DD; /* Verde menta */
+            color: #4C5F56;
+            border: 2px solid #FFFFFF;
+            text-shadow: none;
+        }
+
+
+
+
+      
+        @media (max-width: 768px) {
+            h4, h5 {
+                font-size: 2rem; /* Reduce el tamaño en pantallas pequeñas */
+            }
+            
+        }
+
+                header {
+            position: relative;
+            height: 100vh;
+            background-image: url('static/images/IMG_8146.JPG');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+    header {
+        background-attachment: scroll;
+        background-size: cover; /* Asegura que se expanda en móviles */
+        background-position: center top; /* Centra la imagen */
+    }
+    
+}
+
+                header .contenido-portada {
+            text-align: center;
+            background-color: rgba(195, 228, 221, 0.75); /* Fondo semitransparente */
+            padding: 25px 20px; /* Reduce el padding */
+            border-radius: 15px; /* Bordes más suaves */
+            width: 50%; /* Ajuste de ancho */
+            max-width: 400px; /* Evita que sea demasiado grande */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px; /* Espaciado uniforme */
+        }
+
+                .verde-destacado {
+            color: #4C5F56 !important; /* Verde oscuro */
+            font-size: 5rem; /* Tamaño adecuado */
+            font-family: 'Great Vibes', cursive; /* Fuente elegante */
+            text-align: center; /* Centrado */
+            font-weight: 400;
+            margin: 0 auto;
+        }
+
+
+
+
+
+        /* Aplicación de la fuente Zeyada al título */
+        header h1 {
+            font-family: 'Zeyada', cursive; /* Fuente Zeyada */
+            font-size: 4rem;
+            font-weight: normal;
+            margin: 0;
+            color: #FFFFFF; /* Blanco */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        header p {
+            font-size: 1.4rem;
+            font-style: italic;
+            margin: 10px 0 20px;
+            color: #FFFFFF; /* Blanco */
+        }
+
+        header .boton-principal {
+            margin-top: 20px;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            background-color: #C3E4DD; /* Verde menta */
+            color: #4C5F56; /* Verde oscuro */
+            border: 2px solid #FFFFFF; /* Blanco */
+            border-radius: 25px;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        header .boton-principal:hover {
+            background-color: #A8D8CC; /* Verde menta más oscuro */
+        }
+
+        .contenido-principal {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .contenido-principal img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+
+
+
+
+
+
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .letra-grande {
+        font-size: 6rem; /* Reduce el tamaño del texto en móviles */
+        margin-top: 20px; /* Baja el grupo de letras menos */
+    }
+
+    .letra-j {
+        font-size: 5rem; /* Reduce tamaño */
+        left: 10%; /* Mueve más al centro en móviles */
+        top: -20px; /* Ajuste fino */
+    }
+
+    .letra-y {
+        font-size: 6rem; /* Reduce tamaño */
+        top: 5px; /* Ajuste fino */
+    }
+
+    .letra-c {
+        font-size: 5rem; /* Reduce tamaño */
+        right: 10%; /* Mueve más al centro */
+        top: 25px; /* Ajuste fino */
+    }
+
+    .titulo-principal {
+        margin-bottom: 30px; /* Menos espacio en móviles */
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas (teléfonos compactos) */
+@media (max-width: 480px) {
+    .letra-grande {
+        font-size: 5rem; /* Reduce aún más */
+        margin-top: 15px;
+    }
+
+    .letra-j {
+        font-size: 4rem;
+        left: 5%;
+        top: -15px;
+    }
+
+    .letra-y {
+        font-size: 5rem;
+        top: 0px;
+    }
+
+    .letra-c {
+        font-size: 4rem;
+        right: 5%;
+        top: 15px;
+    }
+
+    .titulo-principal {
+        margin-bottom: 20px;
+    }
+}
+ 
+
+/* 🎯 RESPONSIVE */
+
+/* Ajustes para tablets y móviles (hasta 768px) */
+@media (max-width: 768px) {
+    .boton-calendario {
+        flex-direction: column; /* Apilar elementos */
+        padding: 12px 20px;
+        max-width: 90%;
+    }
+
+    .boton-calendario img {
+        width: 60px; /* Reduce el icono */
+        margin-bottom: 5px;
+    }
+
+    .fecha-boda {
+        font-size: 4rem;
+    }
+}
+
+/* Ajustes para móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+    .boton-calendario {
+        padding: 10px 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .boton-calendario img {
+        width: 50px; /* Reduce aún más el icono */
+        margin-bottom: 5px;
+    }
+
+    .fecha-boda {
+        font-size: 4rem;
+    }
+
+    .texto-calendario span {
+        font-size: 1.2rem; /* Tamaño más pequeño */
+    }
+}
+
+.collage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 columnas */
+    grid-gap: 10px; /* Espacio entre imágenes */
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.collage img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Bordes redondeados */
+    object-fit: cover;
+}
+
+/* Para que se vea bien en móviles */
+@media (max-width: 768px) {
+    .collage {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .collage {
+        grid-template-columns: repeat(1, 1fr); /* 1 columna en pantallas muy pequeñas */
+    }
+}
+
+.texto-boda {
+    font-size: 2rem; /* Tamaño del texto general */
+    font-family: 'Dancing Script', cursive; /* Nueva fuente elegante */
+    font-weight: bold;
+    color: #4C5F56; /* Color del texto */
+    text-align: center; /* Centrado del texto */
+}
+
+.nombre-boda.contenido.niños {
+    font-size: 2.5rem; /* Ajusta el tamaño del texto */
+    font-family: 'Cinzel', serif; /* Nueva fuente clásica y elegante */
+    color: #4C5F56; /* Color del texto */
+    letter-spacing: 2px; /* Espaciado entre letras */
+}
+
+
+
+    </style>
+</head>
+<body>
+    <header id="inicio">
+        <div class="contenido-portada">
+            <h2 class="titulo-principal">Una mision muy especial...</h2>
+            <p class="letra-grande">
+                <span class="letra letra-j">J</span>
+                <span class="letra letra-y">&</span>
+                <span class="letra letra-c">C</span>
+            </p>
+            
+            <p class="fecha">Octubre 2025</p>
+        </div>
+    </header>
+
+    <h1 class="nombre-boda">
+        <span class="nombre-jaidden">Pablo</span>
+        <span class="ampersand">&</span>
+        <span class="nombre-camila">Abigail</span>
+    </h1>
+    
+       
+    </section>
+
+    <footer>
+
+        <p>Nuestro gran día se acerca, y nada nos haría más felices que contar con Pablo y Abigail en un papel tan especial...</p>
+        <p>Queremos que, con su ternura y alegría, hagan aún más mágico este momento. </p>
+        <p>Será un recuerdo inolvidable, y nos encantaría vivirlo juntos.</p>
+        <p>Su presencia es el mayor regalo, y nos hará inmensamente felices tenerlos a nuestro lado mientras unimos nuestras vidas para siempre.</p>
+
+    </footer>
+
+</header>
+
+<h2 class="texto-boda">
+    <span class="nombre-boda contenido niños">¡¡Nuestros pajecitos!!</span>
+</h2>
+
+    <section class="galeria">
+        <div class="collage">
+            <img src="static/images/dcs_7119.JPG" alt="Foto 1">
+            <img src="static/images/dsc_7140.JPG" alt="Foto 2">
+            <img src="static/images/dsc_7053.JPG" alt="Foto 3">
+        </div>
+    </section>
+    
+
+    
+</section>
+
+    
+
+</body>
+</html>

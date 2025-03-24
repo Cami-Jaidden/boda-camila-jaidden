@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function() {
             name: document.getElementById("name").value,
             lastname: document.getElementById("lastname").value, // Capturar apellidos
             attendance: document.getElementById("attendance").value,
-            companions: document.getElementById("companions").value || "0",
             phone: document.getElementById("phone").value || "N/A",
             email: document.getElementById("email").value,
             timestamp: new Date().toISOString() // Capturar fecha y hora del envío

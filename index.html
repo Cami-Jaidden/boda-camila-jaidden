@@ -1114,23 +1114,23 @@
 
 <script>
     function agendarCalendario() {
-    const eventTitle = encodeURIComponent("Boda de Camila & Jaidden");
-    const eventLocation = encodeURIComponent("Capilla La China");
-    const eventStart = "20251025T150000"; // Formato estándar YYYYMMDDTHHMMSS
-    const eventEnd = "20251025T180000"; 
+        const eventTitle = encodeURIComponent("Boda de Jaidden & Camila");
+        const eventLocation = encodeURIComponent("Capilla La China");
+        const eventStart = "20251025"; // Evento TODO EL DÍA (sin hora)
+        const eventEnd = "20251026"; // Termina al día siguiente para abarcar todo el 25
 
-    // Detectar si es iPhone o Android
-    const userAgent = navigator.userAgent.toLowerCase();
-    if (userAgent.includes("iphone") || userAgent.includes("ipad")) {
-        window.location.href = `data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:${eventTitle}%0D%0ALOCATION:${eventLocation}%0D%0ADTSTART:${eventStart}%0D%0ADTEND:${eventEnd}%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR`;
-    } else {
-        // Google Calendar (Para Android y otros dispositivos)
-        const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&location=${eventLocation}&dates=${eventStart}/${eventEnd}`;
-        window.open(googleCalendarUrl, "_blank");
+        // Detectar si es iPhone o Android
+        const userAgent = navigator.userAgent.toLowerCase();
+        if (userAgent.includes("iphone") || userAgent.includes("ipad")) {
+            window.location.href = `data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:${eventTitle}%0D%0ALOCATION:${eventLocation}%0D%0ADTSTART;VALUE=DATE:${eventStart}%0D%0ADTEND;VALUE=DATE:${eventEnd}%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR`;
+        } else {
+            // Google Calendar (Para Android y otros dispositivos)
+            const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&location=${eventLocation}&dates=${eventStart}/${eventEnd}`;
+            window.open(googleCalendarUrl, "_blank");
+        }
     }
-}
+</script>
 
-    </script>
    
    <section class="confirmation-section">
     <div class="confirmation-container">
@@ -1195,6 +1195,7 @@
     background-color: #868F74;
     padding: 40px;
 }
+
 
 /* Contenedor general */
 .confirmation-container {
@@ -1315,6 +1316,14 @@ textarea {
         font-size: 14px;
     }
 }
+/* Estilos del título */
+.confirmation-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem; /* Más grande como título */
+    font-weight: bold;
+    color: #ffffff; /* Verde oscuro */
+}
+
 </style>
 
    
